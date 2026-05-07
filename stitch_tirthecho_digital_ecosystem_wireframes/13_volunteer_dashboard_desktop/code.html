@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Volunteer Dashboard - TirthEcho</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#f0eded",
+                      "primary-container": "#e3f2fd",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#3b4951",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-surface": "#1b1c1c",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#e3e2e2",
+                      "surface-container-low": "#f6f3f2",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-variant": "#e5e2e1",
+                      "secondary": "#5e5e5f",
+                      "on-secondary-container": "#626363",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "outline": "#73787b",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#e0dfdf",
+                      "on-background": "#1b1c1c",
+                      "on-surface-variant": "#43474a",
+                      "surface-bright": "#fcf9f8",
+                      "primary": "#526069",
+                      "inverse-primary": "#bac9d3",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "surface-tint": "#526069",
+                      "on-tertiary-container": "#6c6d6d",
+                      "surface-dim": "#dcd9d9",
+                      "primary-fixed": "#d6e5ef",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#0f1d25",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-highest": "#e5e2e1",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-primary-container": "#606f78",
+                      "outline-variant": "#c3c7cb",
+                      "primary-fixed-dim": "#bac9d3",
+                      "inverse-surface": "#303030",
+                      "tertiary": "#5d5f5f",
+                      "tertiary-container": "#f0f0f0",
+                      "background": "#fcf9f8",
+                      "surface": "#fcf9f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "xs": "4px",
+                      "grid_columns": "12",
+                      "base": "8px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "h2": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar Component -->
+<nav class="bg-surface-container-low dark:bg-surface-container font-label-sm text-label-sm docked left-0 h-full w-64 border-r border-outline-variant dark:border-outline flat no shadows fixed left-0 top-0 h-full flex flex-col p-md z-40">
+<div class="mb-xl px-sm flex items-center gap-3">
+<img alt="User Profile Avatar" class="rounded-full w-10 h-10 object-cover" data-alt="A small circular avatar placeholder image. It features a generic, calm, professional individual in a minimalist studio setting. The lighting is soft and neutral. The aesthetic aligns with the overall minimalist wireframe UI, using desaturated colors and a serene mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPIWb7Lr3-t9GC3C8bR9-NM3EfHLP-mH4u9rK0Rle_1deUzsLMiFe990ysz0NhAI5FSIlJNf5ZhRpTz984uOKF4auYYBWKC-096dsXw8poHBLbXrtn1AlrpqHrKRCkigs79VNfKYlBwdH9qIv5SabGQFTQDJ8d9wGM2ums3gkE-98XUrW1k7Hwz3I3SfTvyVakkbdubvVck7Dhsdooc14X4NKbAkJvxGyGGz0feRbamOiZpFDCpKKDOn5Zd2pzuJzlK643rE8_KYFm"/>
+<div>
+<div class="font-h3 text-h3 text-on-surface dark:text-on-primary-fixed-variant">Admin Panel</div>
+<div class="text-on-surface-variant dark:text-on-surface-variant mt-xs">Management Console</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+<span>Filters</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Directory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant dark:border-outline">
+<button class="w-full py-sm px-md mb-md bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:bg-surface-tint transition-colors">Become a Volunteer</button>
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 p-xl max-w-7xl">
+<header class="mb-xl flex justify-between items-end">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-xs">Volunteer Dashboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back. Here is your current contribution summary.</p>
+</div>
+<button class="flex items-center gap-sm bg-primary-container text-on-primary-container px-md py-sm rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span class="font-label-caps text-label-caps">New Task</span>
+</button>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl">
+<!-- Summary Card 1: My Tasks -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between hover:bg-primary-container hover:border-outline transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center group-hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="task_alt">task_alt</span>
+</div>
+<span class="bg-surface-container px-xs py-xs rounded text-xs text-on-surface-variant font-label-sm">This Week</span>
+</div>
+<div>
+<div class="font-h1 text-h1 text-on-surface mb-xs">12</div>
+<div class="font-body-md text-body-md text-on-surface-variant">My Tasks</div>
+</div>
+</div>
+<!-- Summary Card 2: Pending Uploads -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between hover:bg-primary-container hover:border-outline transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center group-hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<span class="bg-error-container text-on-error-container px-xs py-xs rounded text-xs font-label-sm">Requires Action</span>
+</div>
+<div>
+<div class="font-h1 text-h1 text-on-surface mb-xs">3</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Pending Uploads</div>
+</div>
+</div>
+<!-- Summary Card 3: Points -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between hover:bg-primary-container hover:border-outline transition-colors cursor-pointer group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-32 h-32 bg-primary opacity-5 rounded-bl-full translate-x-10 -translate-y-10 group-hover:opacity-10 transition-opacity"></div>
+<div class="flex justify-between items-start mb-md relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center group-hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="stars">stars</span>
+</div>
+</div>
+<div class="relative z-10">
+<div class="font-h1 text-h1 text-on-surface mb-xs">450</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Points</div>
+</div>
+</div>
+<!-- Task List Table -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h2 class="font-h3 text-h3 text-on-surface">Task List</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest">
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant">Title</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant">Location</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant">Deadline</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md text-on-surface font-medium">Verify Temple Coordinates</td>
+<td class="p-md text-on-surface-variant">Palitana</td>
+<td class="p-md text-on-surface-variant">Oct 24</td>
+<td class="p-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant text-xs">In Progress</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md text-on-surface font-medium">Update Directory Contact</td>
+<td class="p-md text-on-surface-variant">Mumbai</td>
+<td class="p-md text-on-surface-variant">Oct 25</td>
+<td class="p-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-primary-container text-on-primary-container text-xs">Assigned</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md text-on-surface font-medium">Review Uploaded Artifacts</td>
+<td class="p-md text-on-surface-variant">Delhi</td>
+<td class="p-md text-on-surface-variant">Oct 26</td>
+<td class="p-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant text-xs">In Progress</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md text-on-surface font-medium">Community Event Moderation</td>
+<td class="p-md text-on-surface-variant">Online</td>
+<td class="p-md text-on-surface-variant">Oct 28</td>
+<td class="p-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-primary-container text-on-primary-container text-xs">Assigned</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column Sidebar Container -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-gutter">
+<!-- Progress Visual -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<h2 class="font-h3 text-h3 text-on-surface mb-md">Progress Level</h2>
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-primary">Level 4</span>
+<span class="font-body-md text-body-md text-on-surface-variant">450 / 1000 pts</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mb-md">
+<div class="h-full bg-primary rounded-full w-[45%]"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">550 points to Level 5. Complete pending tasks to level up.</p>
+</div>
+<!-- Recent Uploads Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col flex-1">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h2 class="font-h3 text-h3 text-on-surface">Recent Uploads</h2>
+</div>
+<div class="p-md flex flex-col gap-md">
+<!-- Upload Item -->
+<div class="flex items-center gap-md border border-outline-variant p-sm rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="image">image</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Temple_Façade_01.jpg</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-xs mt-xs">2.4 MB</div>
+</div>
+<span class="bg-error-container text-on-error-container px-xs py-xs rounded text-[10px] font-label-caps shrink-0">Pending</span>
+</div>
+<!-- Upload Item -->
+<div class="flex items-center gap-md border border-outline-variant p-sm rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="description">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Historical_Notes.pdf</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-xs mt-xs">1.1 MB</div>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-xs py-xs rounded text-[10px] font-label-caps shrink-0">Approved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

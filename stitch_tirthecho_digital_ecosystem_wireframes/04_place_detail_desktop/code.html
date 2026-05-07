@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - Place Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-lg">
+<a class="font-h2 text-h2 font-bold text-primary dark:text-inverse-primary" href="#">TirthEcho</a>
+<div class="hidden md:flex gap-md font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Map</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Community</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">History</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Volunteer</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-surface-container-low rounded-full px-md py-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface w-48 placeholder-on-surface-variant" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="hidden md:flex gap-sm ml-md">
+<button class="px-md py-sm font-label-sm text-label-sm font-semibold text-primary border border-outline-variant rounded-full hover:bg-surface-variant transition-colors">Login</button>
+<button class="px-md py-sm font-label-sm text-label-sm font-semibold bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-lg py-xl">
+<!-- Header / Banner Area -->
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden mb-lg">
+<img alt="Serene Jain temple facade at sunrise" class="w-full h-full object-cover" data-alt="A sweeping, high-resolution photograph of a majestic Jain temple at sunrise. The architecture features intricate white marble carvings glowing with soft, warm dawn light. The scene is framed by clear blue skies and subtle morning mist, establishing a serene, spiritual mood. The minimalist, high-key lighting perfectly complements the clean wireframe aesthetic of the digital platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYZOITz1t2Sgtstl1a1AADzk_RqR-873cnXAFxkuqkDhWOdqaCMjB4I5JUGpAdjP-L1eQp01yCWhPlAmJ3hSwXyWECR1QRaQMbTKcE5tQinaB5IURKOxFT3KhAfUfB67PAu99LFXiI7fbNVDj7Ri5tWFyLoQFdFvxgxH76AnzCgCtBQrQ7loHE8p721nIkKXB3i7fupecTRx-1F6GpIlUBF5O2RYVWHIlPgqq71hVfOHOG5lXITI7tUc0g8TVTv0DXyaEcR_vWmgpQ"/>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-xl flex justify-between items-end">
+<div>
+<span class="inline-block px-sm py-xs bg-surface/20 backdrop-blur-md rounded-DEFAULT font-label-caps text-label-caps text-on-primary mb-sm">Derasar</span>
+<h1 class="font-h1 text-h1 text-on-primary mb-xs">Shri Mahavir Swami Jain Temple</h1>
+<p class="font-body-lg text-body-lg text-on-primary/90 flex items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                        Ahmedabad, Gujarat
+                    </p>
+</div>
+<button class="p-md bg-surface/20 backdrop-blur-md rounded-full text-on-primary hover:bg-surface/40 transition-colors border border-on-primary/20">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="border-b border-outline-variant mb-xl flex overflow-x-auto hide-scrollbar">
+<button class="px-md py-sm font-h3 text-h3 text-primary border-b-2 border-primary mr-md">Overview</button>
+<button class="px-md py-sm font-h3 text-h3 text-on-surface-variant hover:text-on-surface mr-md transition-colors">Photos &amp; Videos</button>
+<button class="px-md py-sm font-h3 text-h3 text-on-surface-variant hover:text-on-surface mr-md transition-colors">History</button>
+<button class="px-md py-sm font-h3 text-h3 text-on-surface-variant hover:text-on-surface mr-md transition-colors">Facilities</button>
+<button class="px-md py-sm font-h3 text-h3 text-on-surface-variant hover:text-on-surface mr-md transition-colors">Reviews</button>
+<button class="px-md py-sm font-h3 text-h3 text-on-surface-variant hover:text-on-surface transition-colors">Nearby</button>
+</div>
+<!-- Tab Content: Overview (Bento Grid Layout) -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Info & Actions (8 cols) -->
+<div class="col-span-12 md:col-span-8 flex flex-col gap-lg">
+<!-- Info Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">About</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                        A historic and highly revered Shwetambar Jain Derasar located in the heart of the old city. Known for its exquisite marble carvings and peaceful ambiance, it serves as a central hub for community gatherings and daily spiritual practices.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mt-lg">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-xs">schedule</span>
+<div>
+<h3 class="font-label-sm text-label-sm font-bold text-on-surface">Darshan Timings</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Mon - Sun: 6:00 AM - 12:00 PM<br/>4:00 PM - 8:30 PM</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-xs">call</span>
+<div>
+<h3 class="font-label-sm text-label-sm font-bold text-on-surface">Contact</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">+91 79 2644 1234<br/>info@mahavirswamiderasar.org</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-xs">event</span>
+<div>
+<h3 class="font-label-sm text-label-sm font-bold text-on-surface">Upcoming Event</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Mahavir Janma Kalyanak Celebration</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Badges / Amenities -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<h2 class="font-h3 text-h3 text-on-surface mb-md">Amenities</h2>
+<div class="flex flex-wrap gap-sm">
+<span class="inline-flex items-center gap-xs px-md py-sm border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">restaurant</span> Bhojanalay
+                        </span>
+<span class="inline-flex items-center gap-xs px-md py-sm border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">local_parking</span> Parking Available
+                        </span>
+<span class="inline-flex items-center gap-xs px-md py-sm border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">accessible</span> Wheelchair Access
+                        </span>
+<span class="inline-flex items-center gap-xs px-md py-sm border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">menu_book</span> Library (Gyanbhandar)
+                        </span>
+</div>
+</div>
+</div>
+<!-- Right Column: Map & Secondary Info (4 cols) -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-lg">
+<!-- Map Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="h-[200px] bg-surface-variant relative">
+<img alt="Map view of Ahmedabad area" class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A clean, minimalist digital map interface showing city streets in a light-mode color scheme. The map uses subtle grays, whites, and soft blue accents to indicate roads and landmarks. A distinct, modern pin marker highlights a specific location. The aesthetic is highly organized, functional, and devoid of clutter, fitting perfectly within a sophisticated wireframe UI design." data-location="Ahmedabad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtp1RMFvwItJJd6gFStWi9g0ewYug2PKnNLNIIjslZaGxL65msasiaNCNowUV7fQW1C5FyXdYdQU3wsIA6RWieBm5-BzxvjXIkG3LOKlvC8C0eaB4iMfQen-T3KZQrxfcRSXLDv0qpURHXV71Y-3JAuhqOwrpqZlun2Sk2qGUhDe-FCJMOmL0sE2W72Zpp5cGPwXWQlqPreF_rMt_ttwFK2UdT9vVWhkhp_e45ezBOMwjF4zk00ry22A2_Rpj8hopCBk6qqQLObx22"/>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary text-4xl drop-shadow-md" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-label-sm text-label-sm font-bold text-on-surface mb-xs">Address</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                            123 Heritage Route, Old City<br/>Ahmedabad, Gujarat 380001
+                        </p>
+<button class="w-full py-sm bg-primary-container text-on-primary-container font-label-sm text-label-sm rounded-lg flex items-center justify-center gap-xs hover:bg-primary-container/80 transition-colors">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+                            Get Directions
+                        </button>
+</div>
+</div>
+<!-- Administrative Actions Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<button class="w-full text-left font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-sm p-sm rounded-lg hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+                        Suggest edit
+                    </button>
+<button class="w-full text-left font-body-md text-body-md text-on-surface-variant hover:text-error transition-colors flex items-center gap-sm p-sm rounded-lg hover:bg-error-container">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+                        Report incorrect information
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-auto">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+<div class="mb-md md:mb-0">
+<span class="font-h3 text-h3 text-on-surface-variant dark:text-surface-variant">TirthEcho</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">© 2024 TirthEcho. All rights reserved.</p>
+</div>
+<div class="flex gap-lg font-body-md text-body-md text-on-surface-variant dark:text-surface-variant opacity-90 hover:opacity-100 transition-opacity">
+<a class="hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">About</a>
+<a class="hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Donate</a>
+<a class="hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Privacy</a>
+<a class="hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Terms</a>
+<a class="hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

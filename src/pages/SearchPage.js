@@ -1,0 +1,38 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { placesService } from '@/services/api';
+import MaterialIcon from '@/components/MaterialIcon';
+import PlaceCard from '@/components/PlaceCard';
+export default function SearchPage() {
+    const [searchParams] = useSearchParams();
+    const [places, setPlaces] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [distance, setDistance] = useState(50);
+    const [sortBy, setSortBy] = useState('popular');
+    const category = searchParams.get('category') || '';
+    const query = searchParams.get('q') || '';
+    useEffect(() => {
+        const fetchPlaces = async () => {
+            try {
+                setLoading(true);
+                const data = await placesService.searchPlaces(query || category, {
+                    distance,
+                });
+                setPlaces(data);
+            }
+            catch (error) {
+                console.error('Failed to fetch places:', error);
+            }
+            finally {
+                setLoading(false);
+            }
+        };
+        fetchPlaces();
+    }, [query, category, distance]);
+    return (_jsxs("div", { className: "flex-1 max-w-7xl mx-auto w-full flex flex-col md:flex-row mt-24 px-lg gap-lg pb-xl", children: [_jsxs("aside", { className: "w-full md:w-64 flex-shrink-0 flex flex-col gap-xl border-r-0 md:border-r border-outline-variant pr-0 md:pr-lg", children: [_jsxs("div", { className: "flex items-center justify-between border-b border-outline-variant pb-sm", children: [_jsx("h2", { className: "font-h3 text-h3 text-on-surface", children: "Filters" }), _jsx("button", { className: "font-label-sm text-label-sm text-primary hover:underline", children: "Clear All" })] }), _jsxs("div", { className: "flex flex-col gap-sm", children: [_jsx("label", { className: "font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider", children: "Category" }), _jsx("div", { className: "flex flex-col gap-xs", children: ['Tirth', 'Temple', 'Dharamshala', 'Bhojanalaya'].map((cat) => (_jsxs("label", { className: "flex items-center gap-sm cursor-pointer group", children: [_jsx("input", { type: "checkbox", defaultChecked: cat === category, className: "w-4 h-4 rounded accent-primary" }), _jsx("span", { className: "font-body-md text-body-md text-on-surface group-hover:text-primary", children: cat })] }, cat))) })] }), _jsxs("div", { className: "flex flex-col gap-sm", children: [_jsxs("div", { className: "flex justify-between items-center", children: [_jsx("label", { className: "font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider", children: "Distance" }), _jsxs("span", { className: "font-label-sm text-label-sm text-on-surface", children: [distance, " km"] })] }), _jsx("input", { type: "range", min: "5", max: "200", value: distance, onChange: (e) => setDistance(parseInt(e.target.value)), className: "w-full h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" })] }), _jsxs("div", { className: "flex flex-col gap-sm", children: [_jsx("label", { className: "font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider", children: "Facilities" }), _jsx("div", { className: "flex flex-col gap-xs", children: ['Parking', 'AC Rooms', 'Wheelchair Accessible'].map((facility) => (_jsxs("label", { className: "flex items-center gap-sm cursor-pointer group", children: [_jsx("input", { type: "checkbox", className: "w-4 h-4 rounded accent-primary" }), _jsx("span", { className: "font-body-md text-body-md text-on-surface group-hover:text-primary", children: facility })] }, facility))) })] }), _jsx("button", { className: "w-full bg-primary text-on-primary font-label-caps text-label-caps py-sm rounded uppercase tracking-wider hover:opacity-90 transition-opacity mt-md", children: "Apply Filters" })] }), _jsxs("main", { className: "flex-1 flex flex-col gap-md", children: [_jsxs("div", { className: "flex flex-col sm:flex-row justify-between items-start sm:items-center bg-surface-container-low p-md rounded border border-outline-variant", children: [_jsxs("p", { className: "font-body-md text-body-md text-on-surface-variant mb-sm sm:mb-0", children: ["Showing ", _jsx("span", { className: "font-bold text-on-surface", children: places.length }), " results"] }), _jsxs("div", { className: "flex items-center gap-sm", children: [_jsx("label", { className: "font-label-sm text-label-sm text-on-surface-variant", children: "Sort by:" }), _jsx("div", { className: "flex bg-surface border border-outline-variant rounded overflow-hidden", children: ['Popular', 'Rating', 'Distance'].map((sort) => (_jsx("button", { onClick: () => setSortBy(sort.toLowerCase()), className: `px-sm py-xs font-label-sm text-label-sm transition-colors ${sortBy === sort.toLowerCase()
+                                                ? 'bg-surface-variant text-on-surface'
+                                                : 'text-on-surface-variant hover:bg-surface-variant'} ${sort !== 'Distance' ? 'border-r border-outline-variant' : ''}`, children: sort }, sort))) })] })] }), loading ? (_jsx("div", { className: "flex justify-center py-xl", children: _jsx("p", { className: "text-on-surface-variant", children: "Loading places..." }) })) : places.length === 0 ? (_jsx("div", { className: "flex justify-center py-xl", children: _jsx("p", { className: "text-on-surface-variant", children: "No places found. Try adjusting your filters." }) })) : (_jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md", children: places.map((place) => (_jsx(PlaceCard, { place: place }, place.id))) })), !loading && places.length > 0 && (_jsxs("div", { className: "flex justify-center items-center gap-sm mt-lg pt-md border-t border-outline-variant", children: [_jsx("button", { className: "w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-variant", children: _jsx(MaterialIcon, { name: "chevron_left", size: 18 }) }), [1, 2, 3].map((page) => (_jsx("button", { className: `w-8 h-8 flex items-center justify-center rounded font-label-sm text-label-sm ${page === 1
+                                    ? 'bg-primary text-on-primary'
+                                    : 'border border-outline-variant text-on-surface hover:bg-surface-variant'}`, children: page }, page))), _jsx("button", { className: "w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-variant", children: _jsx(MaterialIcon, { name: "chevron_right", size: 18 }) })] }))] })] }));
+}

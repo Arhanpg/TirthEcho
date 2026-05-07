@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - Explore Jain Heritage</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#f0eded",
+                    "primary-container": "#e3f2fd",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#3b4951",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-surface": "#1b1c1c",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e3e2e2",
+                    "surface-container-low": "#f6f3f2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface-variant": "#e5e2e1",
+                    "secondary": "#5e5e5f",
+                    "on-secondary-container": "#626363",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "outline": "#73787b",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#e0dfdf",
+                    "on-background": "#1b1c1c",
+                    "on-surface-variant": "#43474a",
+                    "surface-bright": "#fcf9f8",
+                    "primary": "#526069",
+                    "inverse-primary": "#bac9d3",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "surface-tint": "#526069",
+                    "on-tertiary-container": "#6c6d6d",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#d6e5ef",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#0f1d25",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container-highest": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#eae7e7",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary-container": "#606f78",
+                    "outline-variant": "#c3c7cb",
+                    "primary-fixed-dim": "#bac9d3",
+                    "inverse-surface": "#303030",
+                    "tertiary": "#5d5f5f",
+                    "tertiary-container": "#f0f0f0",
+                    "background": "#fcf9f8",
+                    "surface": "#fcf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xs": "4px",
+                    "grid_columns": "12",
+                    "base": "8px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "margin": "24px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Inter"],
+                    "h3": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean wireframe look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim sticky top-0 z-50 w-full border-b border-outline-variant dark:border-outline transition-all duration-200">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-md">
+<span class="font-h2 text-h2 font-bold text-primary dark:text-inverse-primary">TirthEcho</span>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 opacity-80 transition-all duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Map</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Community</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">History</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Volunteer</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-md">
+<!-- Icon Actions -->
+<div class="flex items-center gap-sm text-on-surface-variant">
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm hover:bg-surface-variant rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<!-- Primary/Secondary Actions -->
+<div class="hidden lg:flex items-center gap-sm ml-sm border-l border-outline-variant pl-md">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary px-md py-sm transition-colors">Login</button>
+<button class="font-body-md text-body-md bg-primary text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed px-md py-sm rounded transition-colors">Register</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-lg py-xl flex flex-col gap-xl">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center py-xl bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-10" data-alt="A minimalist architectural outline of a serene Jain temple complex. The image uses a light-mode wireframe aesthetic with subtle grey and ethereal blue tones, emphasizing structure, symmetry, and calm spiritual energy over high-fidelity realism." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOhTBwWzUd7at5FUImV7JK2t9LjYFCy4gfFgcShcKxMaCbDfK4suNZKCSDpQ5wiYYBbhYzM6-kJDuqZ0UKwwrI5anagjIEhWzv4J-a6ca2KIYZZV-Fdtl0VvsRnJt7h2qMdVeuQiAyLLncWo1OM8cP_OaC88auOJPiNKBmWFY_9WYksTMbqOI4dtKIdg5eYftsu2lohk9b99uHztbIFquUAekkTmOul7QUvchpauXxjRSzC_Bb2d0M_HNsw9HptY2afKihFIzDMNdN');"></div>
+<div class="relative z-10 max-w-3xl px-lg py-xl flex flex-col gap-lg">
+<h1 class="font-h1 text-h1 text-on-surface">Explore Jain Tirth, Temples &amp; Heritage Worldwide</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Discover sacred sites, community resources, and historical landmarks to guide your spiritual journey and connect with the global community.</p>
+<!-- Search Bar -->
+<div class="mt-md flex flex-col sm:flex-row w-full max-w-2xl mx-auto bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm hover:border-outline transition-colors">
+<div class="flex-grow flex items-center px-md py-sm border-b sm:border-b-0 sm:border-r border-outline-variant">
+<span class="material-symbols-outlined text-outline mr-sm">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder-outline outline-none" placeholder="Search for Tirths, Temples, Cities..." type="text"/>
+</div>
+<button class="flex items-center justify-center gap-xs px-md py-sm bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-label-sm text-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+                        Use My Location
+                    </button>
+<button class="px-lg py-sm bg-primary text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed font-body-md text-body-md transition-colors">
+                        Search
+                    </button>
+</div>
+</div>
+</section>
+<!-- Category Grid -->
+<section class="flex flex-col gap-md">
+<h2 class="font-h2 text-h2 text-on-surface border-b border-outline-variant pb-xs">Categories</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Tile 1 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">temple_hindu</span>
+<span class="font-label-sm text-label-sm text-on-surface">Tirth</span>
+</a>
+<!-- Tile 2 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">synagogue</span>
+<span class="font-label-sm text-label-sm text-on-surface">Temple</span>
+</a>
+<!-- Tile 3 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">hotel</span>
+<span class="font-label-sm text-label-sm text-on-surface">Dharamshala</span>
+</a>
+<!-- Tile 4 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">restaurant</span>
+<span class="font-label-sm text-label-sm text-on-surface">Jain Food</span>
+</a>
+<!-- Tile 5 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">local_gas_station</span>
+<span class="font-label-sm text-label-sm text-on-surface">Fuel</span>
+</a>
+<!-- Tile 6 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">local_hospital</span>
+<span class="font-label-sm text-label-sm text-on-surface">Hospital</span>
+</a>
+<!-- Tile 7 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">menu_book</span>
+<span class="font-label-sm text-label-sm text-on-surface">Jain History</span>
+</a>
+<!-- Tile 8 -->
+<a class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest border border-outline-variant hover:bg-primary-container hover:border-primary-fixed transition-colors rounded-lg gap-sm group" href="#">
+<span class="material-symbols-outlined text-[32px] text-primary group-hover:fill-icon">diversity_3</span>
+<span class="font-label-sm text-label-sm text-on-surface">Community</span>
+</a>
+</div>
+</section>
+<!-- Trending Places (Horizontal Scroll) -->
+<section class="flex flex-col gap-md">
+<div class="flex justify-between items-end border-b border-outline-variant pb-xs">
+<h2 class="font-h2 text-h2 text-on-surface">Featured &amp; Trending</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto gap-md pb-sm no-scrollbar snap-x">
+<!-- Place Card 1 -->
+<div class="min-w-[280px] max-w-[280px] flex flex-col bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden snap-start hover:border-outline transition-colors cursor-pointer">
+<div class="h-32 bg-surface-container bg-cover bg-center" data-alt="A bright, minimalist digital illustration of a prominent Jain temple perched on a rocky hill. The style is wireframe-esque, using pale tones, crisp architectural lines, and a soft blue sky background, conveying peace and elevation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAa2ezR3rWa-N3vXaC2I4fdt1PnDV82jmf6rXncALK73mzYwyg5mONesrYQxwKuSpO3694aOKLKhkJG_a6QbIf-uTH2hl9HldfW7TjuwllHFl66DApXnKADHg6enDdCYmeSDmDKFZutxCx_bB3JeuyLzHbkeERDGCLava84nrIcEgSgQHGMQ2mk-EA55R7ojGAXu8j1MOSJpeVVAoCLHvHa1FAEvGtUVYe27-ISWcWYF6Q8vq-617-knxWl4gb9lHMQ7SXJWRqooRIk');"></div>
+<div class="p-md flex flex-col gap-xs">
+<span class="font-label-caps text-label-caps text-primary">TIRTH</span>
+<h3 class="font-h3 text-h3 text-on-surface truncate">Shikharji Tirth</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Jharkhand, India
+                        </p>
+</div>
+</div>
+<!-- Place Card 2 -->
+<div class="min-w-[280px] max-w-[280px] flex flex-col bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden snap-start hover:border-outline transition-colors cursor-pointer">
+<div class="h-32 bg-surface-container bg-cover bg-center" data-alt="A structural, wireframe-style rendering of an intricately carved temple interior. The color palette is strictly light mode, featuring whites, light greys, and subtle shadows to emphasize the architectural geometry without distracting textures." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjvUwtDowLXn1aBY5BLAr9sELuD9JzHt3jJC-8C36MyTyvInGO9jNgCBAYwa5pWwzncDaRv-WfB-pV1FrcqCJCoFfqSTzquWHfzCMQ3v7C6SdLH51N7-tJOBogU1gWYS875bTF2F7_rgsCFHMOq81qiTBk2SFump3KkygFHHQNwQe7GqTNQGlxpyqiBXy6aiQReCkoTfdHmm5wveZYqe3LElB0FYGfPlOVabNaKCUJ0dKYlKjUC90bJ4ZjCYqDoot4cpZ6QEvhYddb');"></div>
+<div class="p-md flex flex-col gap-xs">
+<span class="font-label-caps text-label-caps text-primary">TEMPLE</span>
+<h3 class="font-h3 text-h3 text-on-surface truncate">Palitana Temples</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Gujarat, India
+                        </p>
+</div>
+</div>
+<!-- Place Card 3 -->
+<div class="min-w-[280px] max-w-[280px] flex flex-col bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden snap-start hover:border-outline transition-colors cursor-pointer">
+<div class="h-32 bg-surface-container bg-cover bg-center" data-alt="A clean, minimalist vector-style graphic of a modern community building or Dharamshala. Light grey walls, simple geometric shapes, and a few outlined trees create a serene, functional environment fitting the brand's organized aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVHIMLuia0ebmfir1XoRvO3dnWY3g_WoofSVpMwL4ROlBUe7THT7EdVWRKKzGgx-u-UzLDTopZn4pebS3EdJf0MwixBbrkJaPaHHgN0WfVdmaGILiXTEpvPECBc39HAb11KRop3VDZbrHwW6K4UqcRX0s5febS4PJaxguvAusuu6Qrsz90kZ3kkvnWrLPAMjatqmX2oMzGPufqBJprwZ1LAeLr1wlClENVIDmFvWv0yrU0ER5V8xxrSG6Ce4aLtCzy8cPppoEpjPxk');"></div>
+<div class="p-md flex flex-col gap-xs">
+<span class="font-label-caps text-label-caps text-primary">DHARAMSHALA</span>
+<h3 class="font-h3 text-h3 text-on-surface truncate">Ranakpur Yatri Niwas</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Rajasthan, India
+                        </p>
+</div>
+</div>
+<!-- Place Card 4 -->
+<div class="min-w-[280px] max-w-[280px] flex flex-col bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden snap-start hover:border-outline transition-colors cursor-pointer">
+<div class="h-32 bg-surface-container bg-cover bg-center" data-alt="A wireframe illustration of a large monolithic statue carved into a hillside, seen from a low angle. The composition relies on crisp, thin linework and tonal layering in greys and off-whites to suggest scale and reverence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsG7hyfcgdOxX7VFD4VA0UJvr3BkxBxwWVONRexwV3tl5BqLKLvIyntpNrI928UROah8MGwpXnBk2qbYfNFcxAorxU8GDHefKd9gt0NEvojDfYq5wo6iI-OCEBKFwQrLi0Um3-57zo1vxsf6geautQlxWNL0mYxcbYjnBfFvHRFO9ydKDrIYdrmgap-kGjeQNYqESxRLS9Zc7fOJVLEjw2sPy8IDF4D3oplAW_uYx5jQRe0az3_p9GWac74-UyJ7DiK2ZYPxrW6ObS');"></div>
+<div class="p-md flex flex-col gap-xs">
+<span class="font-label-caps text-label-caps text-primary">TIRTH</span>
+<h3 class="font-h3 text-h3 text-on-surface truncate">Shravanabelagola</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Karnataka, India
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md border-y border-outline-variant py-lg bg-surface-bright">
+<div class="flex flex-col items-center text-center gap-xs">
+<span class="font-h1 text-h1 text-primary">1,200+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Tirth</span>
+</div>
+<div class="flex flex-col items-center text-center gap-xs">
+<span class="font-h1 text-h1 text-primary">5,400+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Temples</span>
+</div>
+<div class="flex flex-col items-center text-center gap-xs">
+<span class="font-h1 text-h1 text-primary">10k+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Volunteers</span>
+</div>
+<div class="flex flex-col items-center text-center gap-xs">
+<span class="font-h1 text-h1 text-primary">25+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Countries</span>
+</div>
+</section>
+<!-- How it Works Strip -->
+<section class="flex flex-col gap-md">
+<h2 class="font-h2 text-h2 text-on-surface border-b border-outline-variant pb-xs text-center md:text-left">Hierarchy &amp; Participation</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg overflow-x-auto">
+<div class="flex items-center min-w-max justify-between gap-sm">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant">public</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Public</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Member</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary-container">
+<span class="material-symbols-outlined text-primary fill-icon">volunteer_activism</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Volunteer</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant">corporate_fare</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">District</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">State</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 6 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant">flag</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">National</span>
+</div>
+<div class="flex-grow h-px bg-outline-variant min-w-[24px]"></div>
+<!-- Step 7 -->
+<div class="flex flex-col items-center gap-sm w-24 text-center">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-surface-container-highest">
+<span class="material-symbols-outlined text-on-surface">military_tech</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Founder</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Sections -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Become a Volunteer Banner -->
+<div class="flex flex-col justify-center p-xl bg-primary-container border border-outline-variant rounded-xl gap-md relative overflow-hidden">
+<div class="absolute right-[-20%] bottom-[-20%] opacity-10">
+<span class="material-symbols-outlined text-[200px]">group_add</span>
+</div>
+<div class="relative z-10 flex flex-col gap-sm">
+<h3 class="font-h2 text-h2 text-on-primary-fixed-variant">Join the Movement</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Become a volunteer and help us document and maintain data for Tirths and Temples in your local district.</p>
+<button class="mt-sm w-fit px-lg py-sm bg-primary text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed font-label-sm text-label-sm rounded transition-colors uppercase tracking-widest">
+                        Become a Volunteer
+                    </button>
+</div>
+</div>
+<!-- Support & Donate Card -->
+<div class="flex flex-col justify-center p-xl bg-surface-container-lowest border border-outline-variant rounded-xl gap-md hover:border-outline transition-colors">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[32px]">favorite</span>
+<h3 class="font-h2 text-h2 text-on-surface">Support Our Mission</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Your contributions ensure the continued development of this platform and help preserve our heritage digitally.</p>
+<button class="mt-sm w-fit px-lg py-sm border border-outline text-on-surface hover:bg-surface-variant font-label-sm text-label-sm rounded transition-colors uppercase tracking-widest flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">volunteer_activism</span>
+                    Donate Now
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full mt-auto opacity-90 hover:opacity-100 transition-opacity">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-md">
+<!-- Brand Logo/Text -->
+<div class="font-h3 text-h3 text-on-surface-variant dark:text-surface-variant">
+                TirthEcho
+            </div>
+<!-- Links -->
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-body-md text-body-md transition-colors" href="#">About</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-body-md text-body-md transition-colors" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-body-md text-body-md transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-body-md text-body-md transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-body-md text-body-md transition-colors" href="#">Contact</a>
+</nav>
+<!-- Copyright -->
+<div class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md text-center md:text-right">
+                © 2024 TirthEcho. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

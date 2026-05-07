@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#f0eded",
+                      "primary-container": "#e3f2fd",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#3b4951",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-surface": "#1b1c1c",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#e3e2e2",
+                      "surface-container-low": "#f6f3f2",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-variant": "#e5e2e1",
+                      "secondary": "#5e5e5f",
+                      "on-secondary-container": "#626363",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "outline": "#73787b",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#e0dfdf",
+                      "on-background": "#1b1c1c",
+                      "on-surface-variant": "#43474a",
+                      "surface-bright": "#fcf9f8",
+                      "primary": "#526069",
+                      "inverse-primary": "#bac9d3",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "surface-tint": "#526069",
+                      "on-tertiary-container": "#6c6d6d",
+                      "surface-dim": "#dcd9d9",
+                      "primary-fixed": "#d6e5ef",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#0f1d25",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-highest": "#e5e2e1",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-primary-container": "#606f78",
+                      "outline-variant": "#c3c7cb",
+                      "primary-fixed-dim": "#bac9d3",
+                      "inverse-surface": "#303030",
+                      "tertiary": "#5d5f5f",
+                      "tertiary-container": "#f0f0f0",
+                      "background": "#fcf9f8",
+                      "surface": "#fcf9f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "xs": "4px",
+                      "grid_columns": "12",
+                      "base": "8px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "h2": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for wireframe feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf9f8; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c3c7cb; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #73787b; 
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<!-- Brand & Search -->
+<div class="flex items-center gap-xl">
+<a class="font-h2 text-h2 font-bold text-primary" href="#">TirthEcho</a>
+<div class="hidden md:flex items-center bg-surface-container-low border border-outline-variant rounded px-md py-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-surface w-64 placeholder:text-on-surface-variant" placeholder="Search destinations..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Community</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">History</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Donate</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Volunteer</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-md">
+<div class="flex gap-sm mr-md text-on-surface-variant">
+<button class="hover:text-primary transition-colors flex items-center justify-center"><span class="material-symbols-outlined" data-icon="language">language</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center"><span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant px-md py-sm rounded hover:bg-surface-variant transition-colors uppercase tracking-wider">Login</button>
+<button class="font-label-caps text-label-caps text-on-primary bg-primary px-md py-sm rounded hover:opacity-90 transition-opacity uppercase tracking-wider">Register</button>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<div class="flex-1 max-w-7xl mx-auto w-full flex flex-col md:flex-row mt-24 px-lg gap-lg pb-xl">
+<!-- Left Sidebar (Filters) -->
+<aside class="w-full md:w-64 flex-shrink-0 flex flex-col gap-xl border-r-0 md:border-r border-outline-variant pr-0 md:pr-lg">
+<div class="flex items-center justify-between border-b border-outline-variant pb-sm">
+<h2 class="font-h3 text-h3 text-on-surface">Filters</h2>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Clear All</button>
+</div>
+<!-- Search Within -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Search Within</label>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded px-sm py-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] mr-xs" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-surface w-full p-0" placeholder="e.g. Temple name..." type="text"/>
+</div>
+</div>
+<!-- Category -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Category</label>
+<div class="flex flex-col gap-xs">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Derasar</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input checked="" class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Dharamshala</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Bhojanalaya</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Upashray</span>
+</label>
+</div>
+</div>
+<!-- Distance Slider -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Distance</label>
+<span class="font-label-sm text-label-sm text-on-surface">50 km</span>
+</div>
+<input class="w-full h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="200" min="5" type="range" value="50"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>5km</span>
+<span>200km</span>
+</div>
+</div>
+<!-- Location Dropdowns -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Location</label>
+<select class="form-select w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-md text-body-md rounded focus:ring-primary focus:border-primary">
+<option>Gujarat</option>
+<option>Rajasthan</option>
+<option>Maharashtra</option>
+</select>
+<select class="form-select w-full bg-surface-container-low border border-outline-variant text-on-surface font-body-md text-body-md rounded focus:ring-primary focus:border-primary mt-xs">
+<option>Palitana</option>
+<option>Ahmedabad</option>
+<option>Surat</option>
+</select>
+</div>
+<!-- Facilities -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Facilities</label>
+<div class="flex flex-col gap-xs">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Parking</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">AC Rooms</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="form-checkbox h-4 w-4 text-primary bg-surface border-outline rounded focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Wheelchair Accessible</span>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-caps text-label-caps py-sm rounded uppercase tracking-wider hover:opacity-90 transition-opacity mt-md">Apply Filters</button>
+</aside>
+<!-- Main Area: Results -->
+<main class="flex-1 flex flex-col gap-md">
+<!-- Sort Bar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-surface-container-low p-md rounded border border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm sm:mb-0">Showing <span class="font-bold text-on-surface">24</span> results for your search</p>
+<div class="flex items-center gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Sort by:</label>
+<div class="flex bg-surface border border-outline-variant rounded overflow-hidden">
+<button class="px-sm py-xs font-label-sm text-label-sm text-on-surface bg-surface-variant border-r border-outline-variant hover:bg-surface-variant transition-colors">Popular</button>
+<button class="px-sm py-xs font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors border-r border-outline-variant">Rating</button>
+<button class="px-sm py-xs font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-variant transition-colors">Distance</button>
+</div>
+<button class="ml-sm p-xs border border-outline-variant rounded text-on-surface hover:bg-surface-variant"><span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span></button>
+<button class="p-xs border border-transparent rounded text-on-surface-variant hover:bg-surface-variant"><span class="material-symbols-outlined text-[20px]" data-icon="view_list">view_list</span></button>
+</div>
+</div>
+<!-- Grid of Place Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col group hover:border-outline hover:shadow-sm transition-all">
+<div class="h-48 bg-surface-container relative w-full border-b border-outline-variant">
+<img alt="Shatrunjaya Hills Complex" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-300" data-alt="A serene, architectural photograph of a traditional stone temple complex set against a clear sky. The image should feature a bright, light-mode wireframe aesthetic with soft, high-key lighting emphasizing structural lines and calm atmosphere. The color palette is strictly neutral with subtle ethereal blue undertones to match a minimalist Jain community portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgzFQRs_pO_n2HqP-BfpuY1oaCLGb_JWKLqmpZYUVl3c9QHR7yRJBvhuKwQbjs3FMZ64J9vsKeIChZnvta2WId5b4YT74XK8sUIl7Obn7-p9ByxapflXZHeVrmfixUdOshkvXfsCHTmw7KD91CU4LVxFhfIUvc_sxnGkTkVJgBfa_PZOU8p7Vmg5fJY5clgtBEDbs9a7BUnrdbcs73_5GFVPvXMDeaXCIhgkDEq3ii1uXp8dqc7fkpDahSb9jlA8L37iuOhAlUngX1"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur px-xs py-xs rounded flex items-center gap-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="favorite_border">favorite_border</span>
+</div>
+<div class="absolute bottom-sm left-sm">
+<span class="bg-surface-container-lowest text-on-surface font-label-caps text-[10px] uppercase tracking-wider px-sm py-xs rounded border border-outline-variant shadow-sm">Derasar</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1 group-hover:text-primary transition-colors">Shri Shatrunjaya Tirth</h3>
+<div class="flex items-center gap-xs bg-surface-variant px-xs py-xs rounded">
+<span class="material-symbols-outlined text-[14px] text-on-surface" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>Palitana, Gujarat</span>
+<span class="mx-xs text-outline">•</span>
+<span>12 km</span>
+</div>
+<div class="mt-auto pt-sm flex gap-sm border-t border-outline-variant border-dashed">
+<div class="flex items-center gap-xs text-on-surface-variant" title="Dharamshala Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="hotel">hotel</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant" title="Bhojanalaya Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="restaurant">restaurant</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col group hover:border-outline hover:shadow-sm transition-all">
+<div class="h-48 bg-surface-container relative w-full border-b border-outline-variant">
+<img alt="Ranakpur Jain Temple" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-300" data-alt="An interior shot of an intricately carved marble temple hall featuring numerous ornate pillars. The image must adhere to a bright, minimalist wireframe aesthetic, utilizing soft, natural daylight filtering in from above. The color scheme is predominantly white, off-white, and light gray, conveying a serene and highly organized spiritual space suitable for a light-mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpAYm96sVmKs44lpYpZ4oZXnXzanedAoFcrIgJKdrPSpSHxsn9az55zY4IbAENXo2sEB9S9CtP8jR0xXv_saFlTCNmivZDnW6lMtFqmWlC6kzF1SbVGCQI8OUQGPI4LqIYdk4cb1l3hTFapXQiCLhHgTBG5uDi2fvA3dd1wrLbv1uKhc2J42wurnw9U3JvhXmEijyQ4ZPAHB_Ukq8bgtrSBoCihmzPMnwBJOkCT7-inl5vYMtae0LkKOx6oNE6iymbCwv1VQ3IaA9y"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur px-xs py-xs rounded flex items-center gap-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="favorite_border">favorite_border</span>
+</div>
+<div class="absolute bottom-sm left-sm">
+<span class="bg-surface-container-lowest text-on-surface font-label-caps text-[10px] uppercase tracking-wider px-sm py-xs rounded border border-outline-variant shadow-sm">Derasar</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1 group-hover:text-primary transition-colors">Ranakpur Tirth</h3>
+<div class="flex items-center gap-xs bg-surface-variant px-xs py-xs rounded">
+<span class="material-symbols-outlined text-[14px] text-on-surface" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>Pali, Rajasthan</span>
+<span class="mx-xs text-outline">•</span>
+<span>45 km</span>
+</div>
+<div class="mt-auto pt-sm flex gap-sm border-t border-outline-variant border-dashed">
+<div class="flex items-center gap-xs text-on-surface-variant" title="Dharamshala Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="hotel">hotel</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant" title="Parking Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="local_parking">local_parking</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col group hover:border-outline hover:shadow-sm transition-all">
+<div class="h-48 bg-surface-container relative w-full border-b border-outline-variant flex items-center justify-center bg-surface-variant">
+<!-- Placeholder for no image state to show wireframe robustness -->
+<span class="material-symbols-outlined text-[48px] text-outline-variant" data-icon="temple_hindu">temple_hindu</span>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur px-xs py-xs rounded flex items-center gap-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="favorite_border">favorite_border</span>
+</div>
+<div class="absolute bottom-sm left-sm">
+<span class="bg-surface-container-lowest text-on-surface font-label-caps text-[10px] uppercase tracking-wider px-sm py-xs rounded border border-outline-variant shadow-sm">Dharamshala</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1 group-hover:text-primary transition-colors">Jain Bhawan</h3>
+<div class="flex items-center gap-xs bg-surface-variant px-xs py-xs rounded">
+<span class="material-symbols-outlined text-[14px] text-on-surface" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.2</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>Ahmedabad, Gujarat</span>
+<span class="mx-xs text-outline">•</span>
+<span>2.5 km</span>
+</div>
+<div class="mt-auto pt-sm flex gap-sm border-t border-outline-variant border-dashed">
+<div class="flex items-center gap-xs text-on-surface-variant" title="Dharamshala Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="hotel">hotel</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant" title="Bhojanalaya Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant" title="Wheelchair Accessible">
+<span class="material-symbols-outlined text-[18px]" data-icon="accessible">accessible</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col group hover:border-outline hover:shadow-sm transition-all">
+<div class="h-48 bg-surface-container relative w-full border-b border-outline-variant">
+<img alt="Girnar Tirth" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-300" data-alt="A sweeping view of a stone pathway leading up a mountain towards a temple structure, set against a hazy sky. Designed for a light-mode wireframe UI, the image uses soft, low-contrast lighting to maintain a serene, minimalist aesthetic. Colors are stripped back to shades of pale grey, white, and subtle earthy undertones, ensuring the image acts as a calm visual anchor rather than a distraction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJFhNcYdqSWuLbTT3LFgof_C-TI-tzDIsCFJRj0zxiVUN7mbBfb4j13wjWwm1jI3gLI798k56yp5aw9Yb_2X3mETOotfOgTQTYTPTXLB3HGUqmy1gT72U226uXnKZsjHf1KrGm7rhrOEfmeCy-kStXAItHL5KlbQ205J-aJc6XozLbZCfmUdh_iwV6DcLJKJHT6jttFa9e7eAumYsqisntju4OIyOqvkmYyH1OkkSur8amYhRcffvXdcTLCTmQuX6TztElUyjM9w3R"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur px-xs py-xs rounded flex items-center gap-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="favorite_border">favorite_border</span>
+</div>
+<div class="absolute bottom-sm left-sm">
+<span class="bg-surface-container-lowest text-on-surface font-label-caps text-[10px] uppercase tracking-wider px-sm py-xs rounded border border-outline-variant shadow-sm">Derasar</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1 group-hover:text-primary transition-colors">Shri Girnar Tirth</h3>
+<div class="flex items-center gap-xs bg-surface-variant px-xs py-xs rounded">
+<span class="material-symbols-outlined text-[14px] text-on-surface" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>Junagadh, Gujarat</span>
+<span class="mx-xs text-outline">•</span>
+<span>80 km</span>
+</div>
+<div class="mt-auto pt-sm flex gap-sm border-t border-outline-variant border-dashed">
+<div class="flex items-center gap-xs text-on-surface-variant" title="Dharamshala Available">
+<span class="material-symbols-outlined text-[18px]" data-icon="hotel">hotel</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination (Wireframe style) -->
+<div class="flex justify-center items-center gap-sm mt-lg pt-md border-t border-outline-variant">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-variant"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label-sm text-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant">12</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-variant"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-highest border-t border-outline-variant">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-md">
+<div class="font-h3 text-h3 text-on-surface-variant">
+                TirthEcho
+            </div>
+<nav class="flex gap-lg flex-wrap justify-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Donate</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</nav>
+<div class="font-body-md text-body-md text-primary">
+                © 2024 TirthEcho. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

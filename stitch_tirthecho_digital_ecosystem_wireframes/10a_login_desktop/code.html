@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - Login</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex">
+<!-- Split Layout Container -->
+<div class="flex w-full min-h-screen">
+<!-- Left Side: Teaser Image (Hidden on smaller screens, 50% width on desktop) -->
+<div class="hidden lg:block lg:w-1/2 relative bg-surface-container overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A serene and highly organized minimalist architectural interior conceptualizing community connection. The composition features clean geometric lines and structural columns creating a sense of stability, rendered in crisp white and soft gray tones. Bright, high-key natural light floods the space, creating a clean, light-mode aesthetic devoid of distracting textures. The mood is calm, emphasizing structural integrity and focused utility suitable for a digital ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUOdJZdu4YgzIraL5dcwUEq5tAhhgvrYZ9-mAkxnRz4-OQZaVVF9MDqsJSoCQfpT9SqInU7-M0zR_exnh-P6ChfWMyV6Yl5j4rq4JtxnH9c7tksRtQ-i4tFV_RaORfzAVa5IWUXjljVY7ifX9Xo8nTrieQZkn3EQ_oT_SJ6jTRv2EwJTJ32GvsadPDUJOVAH56U4797luuZfeE1dX4Emc7ON04f3m_g5-q3X-uLXfoNHSzhisPilUXmHqlhpZMFSs-5_eXaeb5XNUy"/>
+<!-- Overlay Content (Optional, adds to the premium feel) -->
+<div class="absolute inset-0 p-xl flex flex-col justify-end bg-gradient-to-t from-surface/80 to-transparent">
+<div class="max-w-md">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Welcome to TirthEcho</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Access your community dashboard, manage volunteers, and track analytics in a serene, focused environment.</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Panel -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-lg sm:p-xl bg-background relative">
+<!-- Back Button (Conceptual, if navigating back to a landing page, though often suppressed on root login) -->
+<div class="absolute top-lg left-lg">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Back
+                </button>
+</div>
+<!-- Main Content Container -->
+<div class="w-full max-w-sm flex flex-col gap-xl">
+<!-- Header -->
+<div class="text-center">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-container text-primary mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 28px;">eco</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary mb-xs">Log In</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Continue to your TirthEcho account</p>
+</div>
+<!-- Login Type Tabs -->
+<div class="flex p-xs bg-surface-container-low rounded-xl border border-outline-variant">
+<button class="flex-1 py-sm rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm border border-outline-variant/50 transition-all flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+                        Mobile OTP
+                    </button>
+<button class="flex-1 py-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-all flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+                        Email
+                    </button>
+</div>
+<!-- Form Area (Mobile OTP Active State) -->
+<div class="flex flex-col gap-md">
+<!-- Phone Input Group -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="phone">Phone Number</label>
+<div class="flex rounded-lg border border-outline-variant overflow-hidden focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-shadow bg-surface-container-lowest">
+<select class="border-none bg-transparent py-base pl-md pr-sm font-body-md text-body-md text-on-surface focus:ring-0 cursor-pointer border-r border-outline-variant rounded-none">
+<option value="+1">+1</option>
+<option value="+44">+44</option>
+<option value="+91">+91</option>
+</select>
+<input class="flex-1 border-none bg-transparent px-md py-base font-body-md text-body-md text-on-surface placeholder:text-outline focus:ring-0" id="phone" placeholder="000-000-0000" type="tel"/>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-12 bg-primary text-on-primary rounded-xl font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-tint transition-colors">
+                        Send OTP
+                    </button>
+</div>
+<!-- Form Area (Email State - Hidden visually for this mock, but structured) -->
+<!-- 
+                <div class="hidden flex-col gap-md">
+                    <div class="flex flex-col gap-xs">
+                        <label class="font-label-sm text-label-sm text-on-surface-variant">Email Address</label>
+                        <input type="email" placeholder="name@example.com" class="w-full h-10 px-md rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <div class="flex justify-between items-center">
+                            <label class="font-label-sm text-label-sm text-on-surface-variant">Password</label>
+                            <a href="#" class="font-label-sm text-label-sm text-primary hover:underline">Forgot?</a>
+                        </div>
+                        <input type="password" placeholder="••••••••" class="w-full h-10 px-md rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+                    </div>
+                    <button class="w-full h-10 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-tint transition-colors mt-xs">
+                        Log In
+                    </button>
+                </div>
+                -->
+<!-- Divider -->
+<div class="flex items-center gap-md">
+<div class="h-px flex-1 bg-outline-variant"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Or continue with</span>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<!-- Social Logins -->
+<div class="flex flex-col gap-sm">
+<button class="w-full h-12 border border-outline-variant bg-surface-container-lowest text-on-surface rounded-xl font-label-sm text-label-sm flex items-center justify-center gap-md hover:bg-surface-container-low transition-colors">
+<!-- Generic SVG for Google (Wireframe style) -->
+<svg fill="none" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.67 15.63 16.89 16.78 15.74 17.55V20.35H19.31C21.4 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"></path>
+<path d="M12 23C14.97 23 17.46 22.02 19.31 20.35L15.74 17.55C14.74 18.22 13.48 18.63 12 18.63C9.13 18.63 6.69 16.69 5.8 14.08H2.12V16.94C3.94 20.55 7.66 23 12 23Z" fill="#34A853"></path>
+<path d="M5.8 14.08C5.57 13.4 5.44 12.71 5.44 12C5.44 11.29 5.57 10.6 5.8 9.92V7.06H2.12C1.37 8.55 0.94 10.22 0.94 12C0.94 13.78 1.37 15.45 2.12 16.94L5.8 14.08Z" fill="#FBBC05"></path>
+<path d="M12 5.38C13.62 5.38 15.06 5.93 16.2 7.02L19.39 3.83C17.45 2.03 14.96 1 12 1C7.66 1 3.94 3.45 2.12 7.06L5.8 9.92C6.69 7.31 9.13 5.38 12 5.38Z" fill="#EA4335"></path>
+</svg>
+                        Google
+                    </button>
+<button class="w-full h-12 border border-outline-variant bg-surface-container-lowest text-on-surface rounded-xl font-label-sm text-label-sm flex items-center justify-center gap-md hover:bg-surface-container-low transition-colors">
+<!-- Generic SVG for Apple (Wireframe style) -->
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.365 14.305C16.365 11.272 18.825 9.771 18.94 9.697C17.535 7.643 15.319 7.322 14.567 7.228C12.697 7.039 10.875 8.331 9.919 8.331C8.963 8.331 7.453 7.247 5.908 7.266C3.882 7.294 2.012 8.444 0.972 10.252C-1.144 13.931 0.43 19.387 2.483 22.36C3.487 23.812 4.678 25.441 6.252 25.375C7.769 25.31 8.349 24.387 10.186 24.387C12.023 24.387 12.546 25.375 14.139 25.337C15.77 25.299 16.793 23.85 17.788 22.388C18.938 20.701 19.414 19.062 19.442 18.977C19.385 18.949 16.365 17.781 16.365 14.305V14.305ZM13.626 4.93C14.461 3.921 15.022 2.545 14.87 1.171C13.682 1.218 12.219 1.963 11.356 2.962C10.584 3.849 9.91 5.253 10.081 6.608C11.401 6.709 12.791 5.938 13.626 4.93V4.93Z" transform="translate(2 0)"></path>
+</svg>
+                        Apple
+                    </button>
+</div>
+<!-- Footer Links -->
+<div class="text-center mt-sm">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Don't have an account? <a class="text-primary font-label-sm text-label-sm hover:underline" href="#">Sign up</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

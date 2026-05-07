@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Map / Nearby - TirthEcho</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#f0eded",
+                "primary-container": "#e3f2fd",
+                "on-primary": "#ffffff",
+                "on-primary-fixed-variant": "#3b4951",
+                "on-secondary-fixed-variant": "#464747",
+                "on-tertiary-fixed-variant": "#454747",
+                "inverse-on-surface": "#f3f0ef",
+                "on-surface": "#1b1c1c",
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#e3e2e2",
+                "surface-container-low": "#f6f3f2",
+                "on-tertiary-fixed": "#1a1c1c",
+                "surface-variant": "#e5e2e1",
+                "secondary": "#5e5e5f",
+                "on-secondary-container": "#626363",
+                "secondary-fixed-dim": "#c7c6c6",
+                "outline": "#73787b",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#e0dfdf",
+                "on-background": "#1b1c1c",
+                "on-surface-variant": "#43474a",
+                "surface-bright": "#fcf9f8",
+                "primary": "#526069",
+                "inverse-primary": "#bac9d3",
+                "tertiary-fixed-dim": "#c6c6c6",
+                "surface-tint": "#526069",
+                "on-tertiary-container": "#6c6d6d",
+                "surface-dim": "#dcd9d9",
+                "primary-fixed": "#d6e5ef",
+                "on-error": "#ffffff",
+                "on-primary-fixed": "#0f1d25",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#e2e2e2",
+                "surface-container-highest": "#e5e2e1",
+                "error-container": "#ffdad6",
+                "surface-container-high": "#eae7e7",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#1a1c1c",
+                "on-primary-container": "#606f78",
+                "outline-variant": "#c3c7cb",
+                "primary-fixed-dim": "#bac9d3",
+                "inverse-surface": "#303030",
+                "tertiary": "#5d5f5f",
+                "tertiary-container": "#f0f0f0",
+                "background": "#fcf9f8",
+                "surface": "#fcf9f8"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "lg": "24px",
+                "xs": "4px",
+                "grid_columns": "12",
+                "base": "8px",
+                "md": "16px",
+                "xl": "32px",
+                "gutter": "16px",
+                "margin": "24px",
+                "sm": "8px"
+        },
+        "fontFamily": {
+                "body-md": ["Inter"],
+                "label-caps": ["Inter"],
+                "h2": ["Inter"],
+                "h3": ["Inter"],
+                "label-sm": ["Inter"],
+                "h1": ["Inter"],
+                "body-lg": ["Inter"]
+        },
+        "fontSize": {
+                "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500"}],
+                "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #fcf9f8; }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-h2 text-h2 font-bold text-primary dark:text-inverse-primary">TirthEcho</span>
+<div class="relative ml-xl hidden md:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 20px;">search</span>
+<input class="pl-[32px] pr-sm py-sm bg-surface-container-low border border-outline-variant rounded-full text-body-md font-body-md text-on-surface w-64 focus:outline-none focus:border-primary" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Home</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-body-md text-body-md opacity-80 transition-all duration-200" href="#">Map</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Community</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">History</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Volunteer</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">language</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">dark_mode</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">account_circle</span></button>
+<button class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm px-md py-sm">Login</button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-md py-sm rounded-full hover:bg-opacity-90">Register</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="flex-1 flex overflow-hidden w-full max-w-[1600px] mx-auto relative">
+<!-- Map Area (70%) -->
+<div class="w-[70%] relative bg-surface-container h-full">
+<!-- Simulated Map Image -->
+<img alt="Map View" class="w-full h-full object-cover" data-alt="A highly detailed top-down view of a modern minimalist digital map interface in light mode. The map shows urban grids and park areas in soft, monochromatic grays and whites with subtle blue accents. The visual style is clean, organized, and serene, lacking high-contrast visual clutter. Lighting is even and soft, emphasizing clarity and structural integrity suitable for a community navigation tool." data-location="India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYWkbidixikTPXAytOG-hdBourbNZkAfeDiheVj_ccqf5adXpHXC-HzsCIhD-Wpn0zDVrAF7LIpbtzov9uNVAgsDxGGc7xFteGkDxcx3hKSzd-4i76L9EsUEPTYwI1zhfOix0Ylk7RdZQE8u2i9t2p8D0GxxLP51EX18oIB8ZKAzvFStxhYOC2aicxbXmTqVPXN119oAOUC4esQ2rhEqZAXrHA2nCsXtZ6ULyX4yukNxPRjRJyGvyfHseNAFWpbYc6_MXfwmlzCzch"/>
+<!-- Overlay Search Bar -->
+<div class="absolute top-md left-md z-10 w-80">
+<div class="bg-surface rounded-full shadow-sm flex items-center px-md py-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:outline-none text-body-md font-body-md w-full text-on-surface placeholder-on-surface-variant" placeholder="Search this area..." type="text"/>
+</div>
+</div>
+<!-- Simulated Custom Pins -->
+<div class="absolute top-1/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2">
+<div class="bg-surface border border-outline text-primary p-xs rounded-full shadow-sm"><span class="material-symbols-outlined" style="font-size: 24px;">place</span></div>
+</div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<div class="bg-primary-container text-primary p-xs rounded-full shadow-sm ring-4 ring-primary ring-opacity-20"><span class="material-symbols-outlined" style="font-size: 28px;">star</span></div>
+<!-- Radius Circle -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-primary rounded-full opacity-30 bg-primary bg-opacity-10 pointer-events-none"></div>
+</div>
+<div class="absolute bottom-1/4 right-1/4 transform -translate-x-1/2 -translate-y-1/2">
+<div class="bg-surface border border-outline text-primary p-xs rounded-full shadow-sm"><span class="material-symbols-outlined" style="font-size: 24px;">place</span></div>
+</div>
+<!-- Bottom Strip Carousel (Overlay on Map) -->
+<div class="absolute bottom-md left-md right-md z-10 overflow-x-auto pb-sm hide-scrollbar">
+<div class="flex gap-md w-max px-sm">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl border border-outline-variant w-72 flex-shrink-0 shadow-sm flex overflow-hidden">
+<img alt="Place Image" class="w-24 h-24 object-cover" data-alt="A serene, minimalist photograph of an architectural structure with clean geometric lines, bathed in soft daylight. The palette consists of whites, grays, and subtle earthy tones, reflecting a peaceful community space. The lighting is high-key and natural, creating a calm, focused aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZYHkku_Q8DiGjHA_nNlVxviBLl3tMlK4-GPiQhtHRsT8y2XsZGLzbZ0VnuwKaEU7Fo9wg3easQlIaagFcLqIjdAxkozkPTp99PzXpmIu0UMXLp8GrUs47A1v1F6WTlysM4kPdVoomyrqJPlXV6H4_hZ09jG9hZ55VeWYUPe1nt1Ds6djbQJatGJGCp8CijrFTLMZtMFvl2HfzBGvlvYMpnExGz1r_2chLqndQJIg8WKqC11Gr1FDuFxob7S9-XLArKp1tPysAVMV"/>
+<div class="p-sm flex flex-col justify-center">
+<h4 class="font-h3 text-h3 text-on-surface truncate w-40">Shri Mahavir Swami</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center mt-xs"><span class="material-symbols-outlined text-[14px] mr-xs">near_me</span> 1.2 km</p>
+<p class="font-label-sm text-label-sm text-primary mt-xs">Open now</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant w-72 flex-shrink-0 shadow-sm flex overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
+<img alt="Place Image" class="w-24 h-24 object-cover" data-alt="A bright, minimalist interior view of a community hall with simple, elegant structural columns and natural light streaming in. The mood is highly organized and serene, utilizing a monochromatic gray base with hints of ethereal blue. The visual style avoids any distracting elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSyeegCAPt99F03mKb_1mVZsVVDCwgzY6JTpUapK390zTpkbC55SxKLtZJEa40bISdRXYyQIx6cOT4ogZHEcyNBHAPt3gDOTHa4y9bL1T4zBFDOoJxSN9mRQk8wiCNyFVU0LemOiez9pDiZoQGXMA7Nl_apBuW2lZe4vwP072uZZTJPjds5B4TUQK6NQzKJMhOZ9KXopHX5wInMhibts4nnXp4-RwJT7q42OkDmctX-svUDi5NTCsKPi_0eXDR0wjXCzo4b6KyvejB"/>
+<div class="p-sm flex flex-col justify-center">
+<h4 class="font-h3 text-h3 text-on-surface truncate w-40">Community Center</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center mt-xs"><span class="material-symbols-outlined text-[14px] mr-xs">near_me</span> 2.5 km</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Closes at 8 PM</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant w-72 flex-shrink-0 shadow-sm flex overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-24 h-24 bg-surface-container-highest flex items-center justify-center"><span class="material-symbols-outlined text-outline text-[32px]">museum</span></div>
+<div class="p-sm flex flex-col justify-center">
+<h4 class="font-h3 text-h3 text-on-surface truncate w-40">Heritage Library</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center mt-xs"><span class="material-symbols-outlined text-[14px] mr-xs">near_me</span> 3.8 km</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Closed</p>
+</div>
+</div>
+</div>
+</div>
+<style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      </style>
+</div>
+<!-- Right Filter Panel (30%) -->
+<div class="w-[30%] bg-surface-container-low border-l border-outline-variant h-full flex flex-col overflow-y-auto">
+<div class="p-lg border-b border-outline-variant">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Explore Nearby</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Filter locations based on your preferences.</p>
+</div>
+<div class="p-lg flex-1 flex flex-col gap-xl">
+<!-- Categories -->
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-md uppercase">Categories</h3>
+<div class="flex flex-col gap-sm">
+<label class="flex items-center gap-sm cursor-pointer p-sm hover:bg-surface-variant rounded-lg transition-colors">
+<input checked="" class="form-checkbox text-primary rounded border-outline focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Temples</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer p-sm hover:bg-surface-variant rounded-lg transition-colors">
+<input class="form-checkbox text-primary rounded border-outline focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Community Halls</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer p-sm hover:bg-surface-variant rounded-lg transition-colors">
+<input checked="" class="form-checkbox text-primary rounded border-outline focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Libraries</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer p-sm hover:bg-surface-variant rounded-lg transition-colors">
+<input class="form-checkbox text-primary rounded border-outline focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Dining Facilities</span>
+</label>
+</div>
+</div>
+<!-- Radius Slider -->
+<div>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Search Radius</h3>
+<span class="font-label-sm text-label-sm text-primary">5 km</span>
+</div>
+<input class="w-full h-2 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" max="20" min="1" type="range" value="5"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mt-xs">
+<span>1 km</span>
+<span>20 km</span>
+</div>
+</div>
+<!-- Verified Toggle -->
+<div class="flex items-center justify-between p-md bg-surface border border-outline-variant rounded-xl">
+<div>
+<h4 class="font-body-md text-body-md text-on-surface font-medium">Verified Locations Only</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Show places confirmed by admins</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant bg-surface">
+<button class="w-full py-md bg-primary text-on-primary font-body-md text-body-md rounded-xl hover:bg-opacity-90 transition-opacity">Apply Filters</button>
+</div>
+</div>
+<!-- Floating Action Buttons Container (Right Side Overlay) -->
+<div class="absolute right-[31%] bottom-xl flex flex-col gap-sm z-20">
+<button class="bg-surface border border-outline-variant text-on-surface w-12 h-12 rounded-full shadow-sm flex items-center justify-center hover:bg-surface-variant transition-colors group relative">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+<span class="absolute right-full mr-sm bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-sm py-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Upload Photo</span>
+</button>
+<button class="bg-surface border border-outline-variant text-on-surface w-12 h-12 rounded-full shadow-sm flex items-center justify-center hover:bg-surface-variant transition-colors group relative">
+<span class="material-symbols-outlined">video_call</span>
+<span class="absolute right-full mr-sm bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-sm py-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Upload Video</span>
+</button>
+<button class="bg-surface border border-outline-variant text-on-surface w-12 h-12 rounded-full shadow-sm flex items-center justify-center hover:bg-surface-variant transition-colors group relative">
+<span class="material-symbols-outlined">edit_location</span>
+<span class="absolute right-full mr-sm bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-sm py-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Suggest Place</span>
+</button>
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full shadow-sm flex items-center justify-center hover:bg-opacity-90 transition-opacity group relative mt-xs">
+<span class="material-symbols-outlined" style="font-size: 28px;">rate_review</span>
+<span class="absolute right-full mr-sm bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-sm py-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Add Review</span>
+</button>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #fcf9f8;
+  color: #1b1c1c;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined.fill-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fcf9f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3c7cb;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #73787b;
+}
+
+/* Utility Classes */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth transitions */
+@layer components {
+  .card-hover {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-hover:hover {
+    border-color: #73787b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+    padding: 0.5rem 1.5rem;
+    background-color: #526069;
+    color: #ffffff;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    background-color: #bac9d3;
+    color: #0f1d25;
+  }
+
+  .btn-secondary {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #c3c7cb;
+    color: #1b1c1c;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .btn-secondary:hover {
+    background-color: #e5e2e1;
+  }
+
+  .input-base {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #c3c7cb;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    color: #1b1c1c;
+  }
+
+  .input-base::placeholder {
+    color: #73787b;
+  }
+
+  .input-base:focus {
+    outline: none;
+    border-color: #526069;
+    box-shadow: 0 0 0 1px #526069;
+  }
+}

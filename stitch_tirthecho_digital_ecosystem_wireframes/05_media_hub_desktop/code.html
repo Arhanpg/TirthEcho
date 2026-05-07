@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Hub - TirthEcho</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col">
+<!-- Shared Component: TopNavBar -->
+<header class="bg-surface border-b border-outline-variant w-full sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-lg">
+<a class="font-h2 text-h2 font-bold text-primary" href="#">TirthEcho</a>
+<div class="hidden md:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-md py-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md p-0 w-64 text-on-surface" placeholder="Search ecosystem..." type="text"/>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md px-sm py-xs" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md px-sm py-xs" href="#">Map</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md px-sm py-xs" href="#">Community</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md px-sm py-xs" href="#">History</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md px-sm py-xs" href="#">Donate</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md px-sm py-xs" href="#">Volunteer</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">language</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">dark_mode</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">account_circle</span></button>
+<div class="hidden md:flex gap-sm ml-sm">
+<button class="text-primary font-label-sm text-label-sm px-md py-sm hover:bg-surface-variant rounded-lg transition-colors">Login</button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-md py-sm rounded-lg hover:opacity-90 transition-opacity">Register</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-lg py-xl flex gap-lg items-start">
+<!-- Left Side Panel: Filters -->
+<aside class="hidden lg:flex flex-col w-64 flex-shrink-0 sticky top-32 gap-xl">
+<div class="flex items-center justify-between">
+<h2 class="font-h3 text-h3 text-on-surface">Filters</h2>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Reset</button>
+</div>
+<!-- Filter Section: State -->
+<div class="border-t border-outline-variant pt-md">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-sm uppercase tracking-wider">State / Region</h3>
+<div class="flex flex-col gap-sm">
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input checked="" class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Gujarat</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Rajasthan</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Madhya Pradesh</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Maharashtra</span>
+</label>
+<button class="text-left text-primary font-label-sm text-label-sm mt-xs hover:underline">Show more</button>
+</div>
+</div>
+<!-- Filter Section: Category -->
+<div class="border-t border-outline-variant pt-md">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-sm uppercase tracking-wider">Category</h3>
+<div class="flex flex-col gap-sm">
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input checked="" class="border-outline text-primary focus:ring-primary w-4 h-4" name="category" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Architecture</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="border-outline text-primary focus:ring-primary w-4 h-4" name="category" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Manuscripts</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="border-outline text-primary focus:ring-primary w-4 h-4" name="category" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Festivals</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-low p-xs rounded">
+<input class="border-outline text-primary focus:ring-primary w-4 h-4" name="category" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Idols / Murti</span>
+</label>
+</div>
+</div>
+<!-- Filter Section: Date -->
+<div class="border-t border-outline-variant pt-md">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-sm uppercase tracking-wider">Upload Date</h3>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option>Any time</option>
+<option>Past week</option>
+<option>Past month</option>
+<option>Past year</option>
+</select>
+</div>
+</aside>
+<!-- Right Content Area: Main Grid & Top Bar -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Contextual Top Bar -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-xl">
+<!-- Horizontal Chips -->
+<div class="flex flex-wrap items-center gap-sm flex-1 overflow-x-auto pb-xs md:pb-0">
+<button class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-md py-sm rounded-full border border-primary-container whitespace-nowrap transition-colors">
+                        All
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-md py-sm rounded-full border border-outline-variant hover:bg-surface-container-low whitespace-nowrap transition-colors">
+                        Verified Photos
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-md py-sm rounded-full border border-outline-variant hover:bg-surface-container-low whitespace-nowrap transition-colors">
+                        Drone Videos
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-md py-sm rounded-full border border-outline-variant hover:bg-surface-container-low whitespace-nowrap transition-colors">
+                        Ancient
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm px-md py-sm rounded-full border border-outline-variant hover:bg-surface-container-low whitespace-nowrap transition-colors">
+                        Documents
+                    </button>
+</div>
+<!-- Search & CTA -->
+<div class="flex items-center gap-md w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-xl pr-md py-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search media..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-lg py-sm rounded-lg hover:opacity-90 transition-opacity flex items-center gap-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                        Upload media
+                    </button>
+</div>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Media Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-outline transition-colors duration-200 flex flex-col">
+<div class="relative h-48 bg-surface-container-low overflow-hidden">
+<img alt="Aerial view of a complex temple" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A serene, high-key architectural photograph of a traditional white marble Jain temple complex taken from a slight aerial perspective. The structure features intricate carvings, multiple domed spires, and a clean, minimalist aesthetic characteristic of the light-mode digital ecosystem. The lighting is soft and diffused, casting gentle shadows that emphasize the architectural depth without harsh contrast. The overall mood is peaceful, organized, and structurally majestic, perfectly aligning with a sophisticated community archival system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvXlQI2zngYa7jZbZQvGtdCAEcM18d-00u38IrwB_Js4fJ7xyuiy9UXSqqG7WCHtVOryopYUFZd0jFMXR_KAdlcZ1deIgvbYGOCnqZavFiy4LsP6Y_nYXlXQJUwONTtpa9lFl9XC7WZUrIRgEkRwhDwEX6GK8w64JNiKQ6BlmMCNgXoUjkziR5tDoL8U-PwPciEJoUJRbINDMTeXhUWZ7S1w3AxkjLamvOrl5eZLhScfCxIyls2Vy6wg3KfpFajlGOC1q6HYaQoJly"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant px-sm py-xs rounded font-label-caps text-label-caps text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-primary icon-fill">verified</span>
+                            Verified
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h4 class="font-h3 text-h3 text-on-surface mb-xs truncate">Palitana Aerial View</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">High resolution drone footage capturing the vast expanse of the temple complex during sunrise.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Rahul M.</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2 days ago</span>
+</div>
+</div>
+</div>
+<!-- Media Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-outline transition-colors duration-200 flex flex-col">
+<div class="relative h-48 bg-surface-container-low overflow-hidden">
+<img alt="Ancient manuscript text" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro, beautifully lit photograph of an ancient manuscript page resting on a pristine white surface. The script is elegant and aged, presented with a minimalist wireframe aesthetic that avoids distracting background textures. The illumination is bright and even, highlighting the texture of the old paper while maintaining a clean, modern digital light-mode palette. The composition is focused entirely on the information and history, reflecting a serene and scholarly environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhG8Sm5NaejOI23cAkao4_yIx9bDiXQ7N2aPJ4aTYfkhRuKQ8q7nCEc49nCfp2wUp1268YjQUQivU1rrGUd-ILWV-RQihs9AS4jGegFUFV_8mwOBh6r1wCBOs89Xt3PY9VnvjG_Q-89vUwv4dBLM_yvzEbxjTkIyOaRm9NNbqKAccPIYOnDposJWQBtzzCwNFNHcrYO2zfhsiKKIgUBLqcP4C0jXQPF7KJ3WXEXVrA2DwRMmgeWys8eORpH2Grp5lAn20JsyQDVhKX"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant px-sm py-xs rounded font-label-caps text-label-caps text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">pending</span>
+                            Pending
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h4 class="font-h3 text-h3 text-on-surface mb-xs truncate">14th Century Kalpasutra</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Scanned pages of a highly preserved manuscript detailing ancient rituals, currently under review by historians.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Dr. Shah</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">5 days ago</span>
+</div>
+</div>
+</div>
+<!-- Media Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-outline transition-colors duration-200 flex flex-col">
+<div class="relative h-48 bg-surface-container-low overflow-hidden">
+<img alt="Intricate marble carving" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up, minimalist photograph detailing intricate geometric marble carvings on a pillar. The scene is bathed in brilliant, ethereal white light, creating soft, low-contrast shadows that define the depth of the sculpture. The image adheres strictly to a light-mode, wireframe-inspired aesthetic, devoid of clutter or vibrant extraneous colors. The visual tone is deeply serene, structured, and focused purely on the architectural purity of the spiritual artifact." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9xc0CHMwEbGgga9Q2O4aQhKfvKvh-qd5xiNF0bwnpAk_nqXy6FBIXI3EtBZU2Qe81evF0PO18vXjcLJJccWQKmRUf-oAhdoQWHu983qcEklw6JpnE0JU-g44DcazCPt6aIM_sIkIZW8V3c75olV5_YwcLl9Xg89MsTO3jQQScEDV8F1Ulr2rgMPr520ovZhdknSoJFTV6WN9HSh90j6TwjGMN8hlEw0pRoD6VxbM-plraFfXD2AmDalgljD2CU5iW_oQ_trxQ2xxg"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant px-sm py-xs rounded font-label-caps text-label-caps text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-primary icon-fill">verified</span>
+                            Verified
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h4 class="font-h3 text-h3 text-on-surface mb-xs truncate">Ranakpur Pillar Details</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Close-up photography of the uniquely carved pillars within the main hall, showcasing geometric precision.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Archive Bot</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">1 week ago</span>
+</div>
+</div>
+</div>
+<!-- Media Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:border-outline transition-colors duration-200 flex flex-col">
+<div class="relative h-48 bg-surface-container-low overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline-variant">description</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h4 class="font-h3 text-h3 text-on-surface mb-xs truncate">Restoration Guidelines.pdf</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Official architectural guidelines for restoring structural integrity without altering original designs.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Committee</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2 weeks ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More (Conceptual) -->
+<div class="mt-xl flex justify-center">
+<button class="bg-surface-container-lowest text-on-surface font-label-sm text-label-sm px-lg py-sm rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+                    Load more media
+                </button>
+</div>
+</div>
+</main>
+</body></html>

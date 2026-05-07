@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Donate - TirthEcho</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen flex flex-col font-body-md text-body-md text-on-background">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows sticky z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-h2 text-h2 font-bold text-primary dark:text-inverse-primary">TirthEcho</span>
+<div class="hidden lg:flex items-center bg-surface-container-low px-md py-sm rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none outline-none text-body-md text-on-surface w-48 focus:ring-0 p-0" placeholder="Search..." type="text"/>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-lg font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Map</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Community</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">History</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 Active: opacity-80 transition-all duration-200" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Volunteer</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex items-center gap-sm text-on-surface-variant">
+<button class="hover:text-primary transition-colors flex items-center justify-center p-sm"><span class="material-symbols-outlined" data-icon="language">language</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-sm"><span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-sm"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-sm"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+<button class="text-primary hover:text-on-surface transition-colors font-label-sm text-label-sm">Login</button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity">Register</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-lg py-xl flex flex-col gap-xl">
+<!-- Hero Strip -->
+<section class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-xl flex flex-col md:flex-row items-center justify-between gap-lg">
+<div class="flex flex-col gap-sm">
+<h1 class="font-h1 text-h1 text-on-surface">Support Jain Heritage</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Your contributions directly fund digital preservation, community infrastructure, and volunteer initiatives. Help us build a resilient ecosystem for future generations.</p>
+</div>
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity whitespace-nowrap">Donate Now</button>
+</section>
+<!-- Bento Grid Layout for Core Functions -->
+<section class="grid grid-cols-12 gap-gutter">
+<!-- Donation Amount & Input (Left Main Block) -->
+<div class="col-span-12 md:col-span-8 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-lg shadow-sm">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h2 text-h2 text-on-surface">Select Amount</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose a tier or enter a custom contribution.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-md">
+<button class="border border-outline-variant bg-surface hover:bg-surface-container text-on-surface py-md rounded-lg font-h3 text-h3 transition-colors">$25</button>
+<button class="border-2 border-primary bg-primary-container text-on-primary-container py-md rounded-lg font-h3 text-h3 transition-colors">$50</button>
+<button class="border border-outline-variant bg-surface hover:bg-surface-container text-on-surface py-md rounded-lg font-h3 text-h3 transition-colors">$100</button>
+<button class="border border-outline-variant bg-surface hover:bg-surface-container text-on-surface py-md rounded-lg font-h3 text-h3 transition-colors">$500</button>
+</div>
+<div class="flex flex-col sm:flex-row gap-md items-center w-full">
+<div class="relative w-full flex-grow">
+<span class="absolute left-md top-1/2 transform -translate-y-1/2 text-on-surface-variant font-h3 text-h3">$</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg pl-xl pr-md py-md font-body-lg text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Custom Amount" type="number"/>
+</div>
+<div class="w-full sm:w-auto flex gap-md">
+<button class="flex-1 sm:flex-none border border-outline-variant bg-surface hover:bg-surface-container text-on-surface-variant px-md py-md rounded-lg flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</button>
+<button class="flex-1 sm:flex-none border border-outline-variant bg-surface hover:bg-surface-container text-on-surface-variant px-md py-md rounded-lg flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Transparency Meter -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Fund Allocation Status</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Q3 Infrastructure Goals</p>
+</div>
+<span class="font-label-caps text-label-caps text-primary">65% FUNDED</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-md overflow-hidden flex">
+<div class="bg-primary h-full rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Current: $65,000</span>
+<span>Goal: $100,000</span>
+</div>
+</div>
+</div>
+<!-- Top Donors Wall (Right Sidebar Block) -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="workspace_premium" data-weight="fill">workspace_premium</span>
+<h3 class="font-h3 text-h3 text-on-surface">Top Donors</h3>
+</div>
+<div class="flex flex-col gap-sm overflow-y-auto max-h-[300px]">
+<!-- Donor Item -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-label-caps text-label-caps">AK</div>
+<span class="font-body-md text-body-md text-on-surface">Anonymous Kiran</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$5,000</span>
+</div>
+<!-- Donor Item -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-caps text-label-caps">MJ</div>
+<span class="font-body-md text-body-md text-on-surface">Meera Jain</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$2,500</span>
+</div>
+<!-- Donor Item -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-caps text-label-caps">R</div>
+<span class="font-body-md text-body-md text-on-surface">Rahul S.</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$1,000</span>
+</div>
+<!-- Donor Item -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-caps text-label-caps">Family</div>
+<span class="font-body-md text-body-md text-on-surface">The Shah Family</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$500</span>
+</div>
+</div>
+<button class="mt-auto w-full border border-outline-variant bg-surface hover:bg-surface-container text-on-surface py-sm rounded-lg font-label-sm text-label-sm transition-colors">View All Supporters</button>
+</div>
+</section>
+<!-- Impact Section -->
+<section class="flex flex-col gap-lg mt-lg">
+<h2 class="font-h2 text-h2 text-on-surface border-b border-outline-variant pb-sm">Your Impact Areas</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Impact Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-sm shadow-sm hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] mb-xs" data-icon="dataset">dataset</span>
+<h3 class="font-h3 text-h3 text-on-surface">Digital Preservation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Archiving ancient manuscripts and texts into secure, accessible digital formats for global scholarly access.</p>
+</div>
+<!-- Impact Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-sm shadow-sm hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] mb-xs" data-icon="model_training">model_training</span>
+<h3 class="font-h3 text-h3 text-on-surface">Volunteer Training</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Equipping community members with skills to manage local events, structural upkeep, and digital moderation.</p>
+</div>
+<!-- Impact Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-sm shadow-sm hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] mb-xs" data-icon="diversity_3">diversity_3</span>
+<h3 class="font-h3 text-h3 text-on-surface">Community Outreach</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Funding educational programs, accessible pathways, and basic infrastructure improvements for remote heritage sites.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-auto flat no shadows">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-lg">
+<span class="font-h3 text-h3 text-on-surface-variant dark:text-surface-variant">TirthEcho</span>
+<nav class="flex flex-wrap justify-center gap-md font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">About</a>
+<a class="text-primary dark:text-inverse-primary underline opacity-90 hover:opacity-100 transition-opacity" href="#">Donate</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface opacity-90 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</nav>
+<span class="font-body-md text-body-md text-primary dark:text-inverse-primary">© 2024 TirthEcho. All rights reserved.</span>
+</div>
+</footer>
+</body></html>

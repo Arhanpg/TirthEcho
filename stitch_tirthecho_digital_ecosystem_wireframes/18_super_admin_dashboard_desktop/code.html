@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Founder Dashboard</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md flex antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="bg-surface-container-low text-primary font-label-sm text-label-sm docked left-0 h-full w-64 border-r border-outline-variant flat no shadows fixed left-0 top-0 h-full flex flex-col p-md z-40">
+<!-- Header -->
+<div class="flex items-center gap-md mb-xl px-sm">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A minimalist, monochromatic user avatar placeholder image in a light-mode design. The avatar features a generic, stylized silhouette of a person in a subtle shade of cool gray against a clean white background. The style is strictly wireframe-like and professional, lacking vibrant colors, seamlessly blending into a systematic, data-focused interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxwg8rD4XFr_ZUWJ8jq6gJkSbEUX5xJSbhoMEbCfgfC8cNQfXRGUH_z5NBHDWqBNxd2KMntogLB3cgoGy1NlmTjV8XNrPdE-n_kSkyi349RKzUpYpuR1oaLarmcmPNsD-N73-vaZvuxmWfHmZ8pcDW-FjD36-hJJZpi_NWWZU3Ziiy1e-3NiSTULvu5Yi_6zppaSzr849VWqzkISvpDn0bR3lHSTmbPGrUnTvnLk7Cf7D8jeQSKahy6qwcVrlRixBWPDAvgRoSjGi4"/>
+<div>
+<h1 class="font-h3 text-h3 text-on-surface truncate">Admin Panel</h1>
+<p class="text-on-surface-variant truncate">Management Console</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto space-y-xs pr-sm">
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">filter_list</span>
+<span>Filters</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-md px-md py-sm w-full bg-primary-container text-on-primary-container rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-bold">Dashboard</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">menu_book</span>
+<span>Directory</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">settings</span>
+<span>Settings</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">help</span>
+<span>Help</span>
+</a>
+</div>
+<!-- CTA & Footer -->
+<div class="mt-auto pt-lg border-t border-outline-variant space-y-md">
+<button class="w-full py-sm px-md border border-outline-variant rounded-DEFAULT text-on-surface hover:bg-surface-variant transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">volunteer_activism</span>
+                Become a Volunteer
+            </button>
+<a class="flex items-center gap-md px-md py-sm w-full text-on-surface-variant hover:bg-surface-variant rounded-xl transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 p-margin min-h-screen max-w-[1600px]">
+<!-- Page Header -->
+<header class="mb-xl flex items-end justify-between border-b border-outline-variant pb-md">
+<div>
+<h2 class="font-h1 text-h1 text-on-background tracking-tight">System Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">Real-time global activity and administration metrics.</p>
+</div>
+<div class="flex gap-sm">
+<button class="p-sm border border-outline-variant rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="p-sm border border-outline-variant rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Top Metrics Row -->
+<div class="col-span-12 grid grid-cols-3 gap-gutter">
+<!-- Metric 1 -->
+<div class="col-span-1 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg flex flex-col justify-between h-32 hover:border-outline transition-colors relative overflow-hidden group">
+<div class="flex justify-between items-start z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Total Global Places</span>
+<span class="material-symbols-outlined text-primary">public</span>
+</div>
+<div class="flex items-baseline gap-sm z-10">
+<span class="font-h1 text-h1 text-on-background">1,204</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 12%</span>
+</div>
+<!-- Subtle decorative background element -->
+<div class="absolute -bottom-6 -right-6 text-surface-variant opacity-20 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 120px;">public</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="col-span-1 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg flex flex-col justify-between h-32 hover:border-outline transition-colors relative overflow-hidden group">
+<div class="flex justify-between items-start z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Active Volunteers</span>
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<div class="flex items-baseline gap-sm z-10">
+<span class="font-h1 text-h1 text-on-background">8,432</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 5%</span>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-variant opacity-20 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 120px;">group</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="col-span-1 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg flex flex-col justify-between h-32 hover:border-outline transition-colors relative overflow-hidden group">
+<div class="flex justify-between items-start z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Pending Approvals</span>
+<span class="material-symbols-outlined text-on-surface-variant">pending_actions</span>
+</div>
+<div class="flex items-baseline gap-sm z-10">
+<span class="font-h1 text-h1 text-on-background">47</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center">Requires attention</span>
+</div>
+<div class="absolute -bottom-6 -right-6 text-surface-variant opacity-20 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 120px;">pending_actions</span>
+</div>
+</div>
+</div>
+<!-- Main Map Section -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col min-h-[400px]">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-h3 text-h3 text-on-background">Global Distribution</h3>
+<div class="flex gap-md">
+<button class="font-label-sm text-label-sm text-primary hover:underline">Heatmap</button>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface">Nodes</button>
+</div>
+</div>
+<div class="flex-1 relative bg-surface-container-lowest">
+<!-- Map Image Placeholder -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="A highly detailed, minimalist digital heatmap of the world map displayed on a bright, light-mode interface. The map uses subtle, monochromatic shades of light gray for landmasses set against a stark, pristine white ocean background. Data density points are highlighted in a single, precise ethereal blue color, varying gently in opacity to indicate concentration zones across the continents. The overall visual aesthetic is extremely clean, analytical, strictly wireframe-inspired, and devoid of unnecessary decorative or geographical textures, designed explicitly for a professional, data-centric administrative dashboard." data-location="World" style="background-image: url('https://placeholder.pics/svg/300');">
+</div>
+<!-- Overlay UI elements -->
+<div class="absolute bottom-md right-md bg-surface-container-lowest border border-outline-variant p-sm rounded-DEFAULT flex flex-col gap-xs opacity-90">
+<div class="flex items-center gap-sm"><div class="w-3 h-3 rounded-full bg-primary-container border border-primary"></div><span class="font-label-sm text-label-sm">High Density</span></div>
+<div class="flex items-center gap-sm"><div class="w-3 h-3 rounded-full bg-surface-variant border border-outline"></div><span class="font-label-sm text-label-sm">Low Density</span></div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Sidebar -->
+<aside class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Quick Actions Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg flex-1">
+<h3 class="font-h3 text-h3 text-on-background border-b border-outline-variant pb-md mb-md">Quick Actions</h3>
+<div class="space-y-sm">
+<button class="w-full flex items-center justify-between p-md border border-outline-variant rounded-DEFAULT hover:bg-surface-variant hover:border-outline transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary group-hover:text-on-surface transition-colors">manage_accounts</span>
+<span class="font-body-md text-on-background">Manage Users</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-on-surface">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md border border-outline-variant rounded-DEFAULT hover:bg-surface-variant hover:border-outline transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary group-hover:text-on-surface transition-colors">admin_panel_settings</span>
+<span class="font-body-md text-on-background">Assign Roles</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-on-surface">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md border border-outline-variant rounded-DEFAULT hover:bg-surface-variant hover:border-outline transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary group-hover:text-on-surface transition-colors">add_location_alt</span>
+<span class="font-body-md text-on-background">Add New Place</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-on-surface">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md border border-outline-variant rounded-DEFAULT hover:bg-surface-variant hover:border-outline transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary group-hover:text-on-surface transition-colors">campaign</span>
+<span class="font-body-md text-on-background">Broadcast Message</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-on-surface">chevron_right</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Pending Approvals Table -->
+<section class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-h3 text-h3 text-on-background flex items-center gap-sm">
+                        Pending Approvals
+                        <span class="bg-primary-container text-on-primary-container font-label-caps px-sm py-[2px] rounded-full text-[10px]">47</span>
+</h3>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-xs" href="#">
+                        View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="font-label-caps text-label-caps text-on-surface-variant px-lg py-md font-medium">Entity Name</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant px-lg py-md font-medium">Type</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant px-lg py-md font-medium">Location</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant px-lg py-md font-medium">Date Submitted</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant px-lg py-md font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-background divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-medium">Jain Center of America</td>
+<td class="px-lg py-md text-on-surface-variant"><span class="inline-flex items-center gap-xs border border-outline-variant px-sm py-[2px] rounded-full text-xs"><span class="material-symbols-outlined text-[14px]">temple_hindu</span> Place</span></td>
+<td class="px-lg py-md text-on-surface-variant">New York, USA</td>
+<td class="px-lg py-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="font-label-sm text-primary hover:text-on-background transition-colors mr-md">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-medium">Rahul Mehta</td>
+<td class="px-lg py-md text-on-surface-variant"><span class="inline-flex items-center gap-xs border border-outline-variant px-sm py-[2px] rounded-full text-xs"><span class="material-symbols-outlined text-[14px]">person</span> Volunteer</span></td>
+<td class="px-lg py-md text-on-surface-variant">London, UK</td>
+<td class="px-lg py-md text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="font-label-sm text-primary hover:text-on-background transition-colors mr-md">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-medium">Ahimsa Foundation</td>
+<td class="px-lg py-md text-on-surface-variant"><span class="inline-flex items-center gap-xs border border-outline-variant px-sm py-[2px] rounded-full text-xs"><span class="material-symbols-outlined text-[14px]">corporate_fare</span> Organization</span></td>
+<td class="px-lg py-md text-on-surface-variant">Mumbai, India</td>
+<td class="px-lg py-md text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="font-label-sm text-primary hover:text-on-background transition-colors mr-md">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-medium">Priya Jain</td>
+<td class="px-lg py-md text-on-surface-variant"><span class="inline-flex items-center gap-xs border border-outline-variant px-sm py-[2px] rounded-full text-xs"><span class="material-symbols-outlined text-[14px]">person</span> Volunteer</span></td>
+<td class="px-lg py-md text-on-surface-variant">Toronto, Canada</td>
+<td class="px-lg py-md text-on-surface-variant">Oct 21, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="font-label-sm text-primary hover:text-on-background transition-colors mr-md">Review</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

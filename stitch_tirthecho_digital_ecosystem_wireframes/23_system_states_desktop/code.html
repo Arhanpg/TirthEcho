@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - System States</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .skeleton-shimmer {
+            background: linear-gradient(90deg, #f0eded 25%, #e5e2e1 50%, #f0eded 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface docked full-width top-0 border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-h2 text-h2 font-bold text-primary">TirthEcho</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Map</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Community</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">History</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Donate</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Volunteer</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="font-label-caps text-label-caps text-primary border border-primary px-md py-sm rounded">Login</button>
+<button class="font-label-caps text-label-caps bg-primary text-on-primary px-md py-sm rounded">Register</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow flex flex-col items-center justify-center p-xl gap-xl max-w-7xl mx-auto w-full">
+<div class="w-full mb-xl">
+<h1 class="font-h1 text-h1 text-on-surface mb-md">System States Gallery</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A collection of various system states, errors, and loading skeletons.</p>
+</div>
+<!-- 404 Error State -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center shadow-sm">
+<h2 class="font-h2 text-h2 mb-xl self-start w-full text-left border-b border-outline-variant pb-sm">1. 404 Not Found</h2>
+<div class="max-w-md w-full py-xl">
+<div class="w-48 h-48 mx-auto bg-surface-container rounded-full mb-lg flex items-center justify-center overflow-hidden">
+<img alt="Serene Temple" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="A minimalist line-art illustration of a traditional Jain temple set against a pale blue circular background. The style is serene, clean, and highly structured, emphasizing architectural symmetry. Soft, high-key lighting creates a calm, contemplative mood, perfectly suited for an empty state or error page in a refined digital interface. The color palette focuses on whites, soft grays, and a single ethereal blue accent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZuAOQAX3mGFMw8KMEr0g3cFV-gO-DMZhXsLgNGPBBfn1owFWbYHm_cWze1zpRJRV9Ll8qXUGTO06s6ysiEJzwTLLiin46Neq7X306ukx9I_fnTAWTd16058vCqkIdU_4Z2ABb7KYKO_zN5c8hFFkQn6SytfJR02kJCGdm_gQhYjTAi-aJ8MZbGS4ujeHxMxNnZUPuDtNkaWaJF2y1UQR35AbNJi09_NsYHNk_8eaAcaGPv4PAl3WpsimYlWJDZSpPILb34s1UXvlH"/>
+</div>
+<h3 class="font-h1 text-h1 text-primary mb-sm">404</h3>
+<h4 class="font-h3 text-h3 text-on-surface mb-md">Page Not Found</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                    The path you are looking for seems to have faded into history. Let us guide you back to the main sanctuary.
+                </p>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-lg py-md rounded-DEFAULT hover:opacity-90 transition-opacity inline-flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">home</span>
+                    Go Home
+                </button>
+</div>
+</section>
+<!-- Generic Error Banner -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col gap-lg shadow-sm">
+<h2 class="font-h2 text-h2 mb-md border-b border-outline-variant pb-sm">2. Generic Error Banner</h2>
+<div class="bg-error-container border border-error/20 rounded-DEFAULT p-md flex items-start gap-md">
+<span class="material-symbols-outlined text-error mt-xs">error</span>
+<div class="flex-grow">
+<h5 class="font-h3 text-h3 text-on-error-container mb-xs">Connection Interrupted</h5>
+<p class="font-body-md text-body-md text-on-error-container/80">
+                        We are unable to reach the server to update the temple registry at this moment. Please check your connection and try again.
+                    </p>
+</div>
+<button class="text-error font-label-caps text-label-caps px-md py-sm hover:bg-error/10 rounded transition-colors">
+                    Retry
+                </button>
+<button class="text-on-error-container hover:text-error transition-colors ml-sm mt-xs">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</section>
+<!-- Empty State - No Results -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center shadow-sm">
+<h2 class="font-h2 text-h2 mb-xl self-start w-full text-left border-b border-outline-variant pb-sm">3. Empty State (No Results)</h2>
+<div class="max-w-md w-full py-xl">
+<div class="w-32 h-32 mx-auto mb-md flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[80px] font-light">search_off</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface mb-sm">No Temples Found</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                    We couldn't find any records matching your search criteria. Try adjusting your filters or search terms to discover more locations.
+                </p>
+<button class="border border-outline text-primary font-label-caps text-label-caps px-lg py-md rounded-DEFAULT hover:bg-surface-variant transition-colors inline-flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">clear_all</span>
+                    Clear Filters
+                </button>
+</div>
+</section>
+<!-- Loading Skeletons -->
+<section class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col gap-xl shadow-sm">
+<h2 class="font-h2 text-h2 border-b border-outline-variant pb-sm">4. Loading Skeletons</h2>
+<div class="grid grid-cols-12 gap-lg w-full">
+<!-- List View Skeletons (8 cols) -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-md">
+<h3 class="font-h3 text-h3 text-on-surface-variant mb-sm">List View Loading</h3>
+<!-- Skeleton Item 1 -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-md flex gap-md">
+<div class="w-24 h-24 rounded bg-surface-container skeleton-shimmer flex-shrink-0"></div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<div class="h-6 w-3/4 rounded bg-surface-container skeleton-shimmer mb-sm"></div>
+<div class="h-4 w-1/2 rounded bg-surface-container skeleton-shimmer mb-xs"></div>
+<div class="h-4 w-1/3 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+<div class="flex gap-sm">
+<div class="h-8 w-20 rounded bg-surface-container skeleton-shimmer"></div>
+<div class="h-8 w-20 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+</div>
+</div>
+<!-- Skeleton Item 2 -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-md flex gap-md">
+<div class="w-24 h-24 rounded bg-surface-container skeleton-shimmer flex-shrink-0"></div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<div class="h-6 w-2/3 rounded bg-surface-container skeleton-shimmer mb-sm"></div>
+<div class="h-4 w-2/5 rounded bg-surface-container skeleton-shimmer mb-xs"></div>
+<div class="h-4 w-1/4 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+<div class="flex gap-sm">
+<div class="h-8 w-20 rounded bg-surface-container skeleton-shimmer"></div>
+<div class="h-8 w-20 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+</div>
+</div>
+<!-- Skeleton Item 3 -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT p-md flex gap-md opacity-50">
+<div class="w-24 h-24 rounded bg-surface-container skeleton-shimmer flex-shrink-0"></div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<div class="h-6 w-4/5 rounded bg-surface-container skeleton-shimmer mb-sm"></div>
+<div class="h-4 w-1/2 rounded bg-surface-container skeleton-shimmer mb-xs"></div>
+<div class="h-4 w-1/3 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+<div class="flex gap-sm">
+<div class="h-8 w-20 rounded bg-surface-container skeleton-shimmer"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map View Skeleton (4 cols) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-md">
+<h3 class="font-h3 text-h3 text-on-surface-variant mb-sm">Map View Loading</h3>
+<div class="w-full h-full min-h-[400px] bg-surface-container border border-outline-variant rounded-DEFAULT skeleton-shimmer relative overflow-hidden flex items-center justify-center">
+<!-- Abstract Map Pins -->
+<div class="absolute top-1/4 left-1/4 w-8 h-8 rounded-full bg-outline-variant/30 animate-pulse"></div>
+<div class="absolute top-1/2 left-2/3 w-8 h-8 rounded-full bg-outline-variant/30 animate-pulse delay-75"></div>
+<div class="absolute bottom-1/3 left-1/2 w-8 h-8 rounded-full bg-outline-variant/30 animate-pulse delay-150"></div>
+<span class="material-symbols-outlined text-[48px] text-outline-variant/50">map</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant full-width bottom flat no shadows mt-xl">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+<span class="font-h3 text-h3 text-on-surface-variant mb-md md:mb-0">© 2024 TirthEcho. All rights reserved.</span>
+<div class="flex flex-wrap gap-md items-center justify-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100" href="#">Donate</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100" href="#">Terms</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface opacity-90 hover:opacity-100" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

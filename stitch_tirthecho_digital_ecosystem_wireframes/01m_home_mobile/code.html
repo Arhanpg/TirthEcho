@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TirthEcho - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eded",
+                        "primary-container": "#e3f2fd",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3b4951",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e3e2e2",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e5e2e1",
+                        "secondary": "#5e5e5f",
+                        "on-secondary-container": "#626363",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#73787b",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e0dfdf",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474a",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#526069",
+                        "inverse-primary": "#bac9d3",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#526069",
+                        "on-tertiary-container": "#6c6d6d",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#d6e5ef",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#0f1d25",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#606f78",
+                        "outline-variant": "#c3c7cb",
+                        "primary-fixed-dim": "#bac9d3",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-container": "#f0f0f0",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "grid_columns": "12",
+                        "base": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "sm": "8px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-20">
+<!-- Mobile Header -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant flex justify-between items-center w-full px-md py-sm">
+<button class="text-on-surface p-sm">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-h2 text-h2 font-bold text-primary">TirthEcho</div>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface p-sm">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface p-sm">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex flex-col gap-xl w-full">
+<!-- Hero Section -->
+<section class="relative w-full h-[300px] flex items-center justify-center bg-surface-container overflow-hidden">
+<img alt="Hero background" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A serene, minimalist digital illustration of an ancient temple complex bathed in soft, high-key white light. The composition features clean geometric lines and a monochromatic palette with subtle ethereal blue accents. The atmosphere is calm, spiritual, and highly organized, reflecting a modern Jain digital ecosystem without visual clutter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVjImprrA3ZYcD2bX9wy7i-__8na5x_KIhpmtjDL3MkSbrirrKweZhOPeDcmCCKQWN78Y4YPWsnLldDqwnYWX4hItSs9PSOEo8BsvjbgJSlfm1mO7CmZNrSD_54K6U_czXXJruzFNRE3ti1rXuwq6or_w0pKMjBqkdu8Ksbqv2eJDHrLrrWJlnLxSIXzMjR77dgGMwe5COxRu02Md-QK1G2E9bPZrEnJdtucfpqwx8WqtVcjXylgnx6kbdHBywmDCYrMLOTFlVs2Pw"/>
+<div class="relative z-10 p-md text-center flex flex-col items-center gap-md">
+<h1 class="font-h1 text-h1 text-on-surface bg-surface/80 px-md py-sm rounded-lg backdrop-blur-sm">Discover Sacred Spaces</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm bg-surface/80 px-md py-sm rounded-lg backdrop-blur-sm">Explore, document, and preserve community heritage.</p>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-lg py-md rounded-full mt-sm hover:opacity-90 transition-opacity">
+                    Start Exploring
+                </button>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="px-md">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Categories</h2>
+<div class="grid grid-cols-3 gap-sm">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Temples</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">local_library</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Libraries</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Bhojanalays</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">bed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Dharamshalas</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">nature_people</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Tirths</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-sm flex flex-col items-center justify-center gap-xs aspect-square hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-2xl">more_horiz</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">More</span>
+</div>
+</div>
+</section>
+<!-- Featured Places (Horizontal Scroll) -->
+<section class="pl-md mb-xl">
+<div class="flex justify-between items-center pr-md mb-md">
+<h2 class="font-h2 text-h2 text-on-surface">Featured Places</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto gap-md pb-sm pr-md snap-x snap-mandatory hide-scrollbar">
+<!-- Card 1 -->
+<div class="snap-start shrink-0 w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<img alt="Place 1" class="w-full h-[120px] object-cover" data-alt="A clean, wireframe-style architectural rendering of a modern community hall. The scene uses a monochromatic white and grey palette with crisp outlines and a single soft blue accent light highlighting the entrance. The environment feels serene, organized, and devoid of clutter, perfectly aligning with a minimalist digital ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5Fr_6dljPz6AVEkF3hMz3PxnpJHC1fhU1LEQWN1kmQSUgrwf_xA_uHVFK6SSQ4-NCwScYsYpFgLTEwOOLgiU-pGcLRCcbDjPAeHTBslGgtjW9xaqiLoObghKEX17jOyViFF9IWr_fQ9ktnowi2nJ_Jtv-rRjYHLtYKybtT1rA9vb95Tcci9D4IZZniKouTGOC7_fAGtlncWraa3w-L93djWyWM-jAA6ZpuyE249ZsTwT93riWrsfrDze8Im9HrsOz9gRxzlGGbgzK"/>
+<div class="p-sm flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface truncate">Shikharji Tirth</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Jharkhand, India
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-start shrink-0 w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<img alt="Place 2" class="w-full h-[120px] object-cover" data-alt="A minimalist digital sketch of an ancient manuscript library interior. The composition relies on stark white backgrounds with precise, thin grey lines detailing the bookshelves. A subtle ethereal blue glow emanates from a central reading table, conveying a sense of focused study and spiritual calm in a wireframe aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAscmlHVLeBINYGlQ9SYTJ7pSfxnYbTBkwSKxKW8Bhn0cASsFugTi6kcGRYOON6jHs1LbHVP1it61sSCje_odSWDwctsfdEHscTqvvIwJK5UrZyxEuOp-N6ONG34Bh9xQ-rG0hNeiVog9lDPfRIuX5mU-imokD9vjpxucZpxdrTFtKxmhG-ANFC3qxzu7WgqmzRfp30pGPXri7VYfuuz36bRDzKiQcpdC4gzvbEFIQnyf856xvAcE_oKmT37u6UYrX4ble4ThmNQLMP"/>
+<div class="p-sm flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface truncate">Gyan Mandir Library</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Palitana, Gujarat
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-start shrink-0 w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<img alt="Place 3" class="w-full h-[120px] object-cover" data-alt="An austere, low-contrast illustration of a community dining hall (Bhojanalay). The image is mostly white and light grey, emphasizing structure over texture. Clean tables are arranged in perfect geometric alignment. A soft, high-key lighting scheme creates a calm, organized atmosphere, consistent with a serene Jain digital platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATvB6Wco14dkPU_ieU-xNKstlAUa2rTmW5ffaEbCfs1oG8kAfN3c7ExYJ8p8f6Wo9CKr64Ofyo5ahZikxCWmM-5SBNKszGRjNANT4tWQ_jNveOg9wFE7bXP_l8rbvE2YHMedhF15PQZKEspbPSsPsFEZB28LBu8c_V9smoGa2YhwNuN_GNk_dsGClhJdzj0rX0fMRm-QM4bqjRp7618cOeHp3v2w60IfE1oMvCEznG9ZWR-HCfwY1b7rRO-uPon9uvf4-Hz62WLb-K"/>
+<div class="p-sm flex flex-col gap-xs">
+<h3 class="font-h3 text-h3 text-on-surface truncate">Jain Bhojanalay</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Mount Abu, Rajasthan
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center py-sm z-50">
+<a class="flex flex-col items-center gap-xs text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl mb-1 bg-primary-container p-1 rounded-full text-on-primary-container">add_circle</span>
+<span class="font-label-sm text-label-sm sr-only">Upload</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>
