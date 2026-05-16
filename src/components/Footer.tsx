@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-surface-container-highest border-t border-outline-variant w-full mt-auto opacity-90 hover:opacity-100 transition-opacity">
       <div className="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-md">
         {/* Brand */}
-        <div className="font-h3 text-h3 text-on-surface-variant">TirthEcho</div>
+        <div className="font-h3 text-h3 text-on-surface-variant">e-Shraman jainism</div>
 
         {/* Links */}
         <nav className="flex flex-wrap justify-center gap-md">
@@ -26,7 +26,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-on-surface-variant font-body-md text-body-md text-center md:text-right">
-          © 2024 TirthEcho. All rights reserved.
+          © 2024 e-Shraman jainism. All rights reserved.
         </div>
       </div>
     </footer>

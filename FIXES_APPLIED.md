@@ -118,7 +118,7 @@ npm run build
 
 ## ✨ All Set!
 
-**Your TirthEcho frontend is now fully functional and ready to use!**
+**Your e-Shraman jainism frontend is now fully functional and ready to use!**
 
 No more errors. Simply run `npm run dev` and start developing.
 

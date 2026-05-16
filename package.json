@@ -1,7 +1,7 @@
 {
-  "name": "tirthecho-frontend",
+  "name": "eshraman-frontend",
   "version": "1.0.0",
-  "description": "TirthEcho - Digital Ecosystem for Jain Heritage",
+  "description": "e-Shraman jainism - Digital Ecosystem for Jain Heritage",
   "type": "module",
   "scripts": {
     "dev": "vite",

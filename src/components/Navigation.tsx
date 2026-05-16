@@ -17,7 +17,7 @@ export default function Navigation() {
       <div className="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-md">
-          <span className="font-h2 text-h2 font-bold text-primary">TirthEcho</span>
+          <span className="font-h2 text-h2 font-bold text-primary">e-Shraman jainism</span>
         </Link>
 
         {/* Navigation Links (Desktop) */}

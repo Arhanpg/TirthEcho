@@ -49,7 +49,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
         <div className="absolute inset-0 p-xl flex flex-col justify-end bg-gradient-to-t from-surface/80 to-transparent">
           <div className="max-w-md">
-            <h2 className="font-h2 text-h2 text-on-surface mb-sm">Welcome to TirthEcho</h2>
+            <h2 className="font-h2 text-h2 text-on-surface mb-sm">Welcome to e-Shraman jainism</h2>
             <p className="font-body-md text-body-md text-on-surface-variant">
               Access your community dashboard, manage volunteers, and track analytics in a serene, focused environment.
             </p>
@@ -78,7 +78,7 @@ export default function LoginPage() {
               <MaterialIcon name="eco" size={28} filled />
             </div>
             <h1 className="font-h1 text-h1 text-primary mb-xs">Log In</h1>
-            <p className="font-body-md text-body-md text-on-surface-variant">Continue to your TirthEcho account</p>
+            <p className="font-body-md text-body-md text-on-surface-variant">Continue to your e-Shraman jainism account</p>
           </div>
 
           {/* Login Type Tabs */}
