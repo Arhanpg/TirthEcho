@@ -1,0 +1,28 @@
+name: Lint & Type Check
+
+on:
+  pull_request:
+    branches: [main, staging]
+  push:
+    branches: [main, staging]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies (backend)
+        run: cd packages/backend && npm ci
+
+      - name: Lint backend
+        run: cd packages/backend && npm run lint
+
+      - name: Type check backend
+        run: cd packages/backend && npm run type-check

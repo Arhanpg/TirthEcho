@@ -1,0 +1,599 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_POOL_URL")
+}
+
+// ============================================================================
+// USERS & AUTHENTICATION
+// ============================================================================
+
+model User {
+  uuid                String    @id @default(uuid())
+  name                String
+  email               String?   @unique
+  mobile              String    @unique
+  passwordHash        String?
+  role                UserRole  @default(VIEWER)
+  reputationPoints    Int       @default(0)
+  profileImgUrl       String?
+  district            String?
+  state               String?
+  country             String?
+  isVerified          Boolean   @default(false)
+  isActive            Boolean   @default(true)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  // Relations
+  places              Place[]
+  reviews             Review[]
+  donations           Donation[]
+  volunteers          Volunteer?
+  posts               Post[]
+  comments            Comment[]
+  media               Media[]
+  adminLogs           AdminLog[]
+  notifications       Notification[]
+
+  @@index([role])
+  @@index([state])
+  @@map("users")
+}
+
+enum UserRole {
+  VIEWER
+  CONTRIBUTOR
+  VOLUNTEER
+  MODERATOR
+  ADMIN
+  SUPERADMIN
+}
+
+model RefreshToken {
+  uuid      String    @id @default(uuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model OTPAttempt {
+  uuid       String    @id @default(uuid())
+  mobile     String
+  attempts   Int       @default(0)
+  lastAttempt DateTime
+  lockedUntil DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@unique([mobile])
+  @@map("otp_attempts")
+}
+
+// ============================================================================
+// PLACES & LOCATIONS
+// ============================================================================
+
+model Place {
+  uuid              String    @id @default(uuid())
+  name              String
+  nameEn            String?
+  nameHi            String?
+  placeType         PlaceType
+  description       String?
+  city              String?
+  district          String?
+  state             String?
+  country           String?
+  latitude          Float?
+  longitude         Float?
+  latitude_geo      Float?
+  longitude_geo     Float?
+  postalCode        String?
+  phone             String?
+  website           String?
+  openingHours      Json?
+  bestTimeToVisit   String?
+  nearbyPlaces      String[]
+  parking           Boolean   @default(false)
+  water             Boolean   @default(false)
+  toilet            Boolean   @default(false)
+  disabledAccess    Boolean   @default(false)
+  entryFee          String?
+  dressCode         String?
+  photographyAllowed Boolean @default(true)
+  pujaiming         String?
+  status            PlaceStatus @default(PENDING_REVIEW)
+  avgRating         Float?
+  reviewCount       Int       @default(0)
+  createdBy         String
+  verifiedBy        String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relations
+  user              User      @relation(fields: [createdBy], references: [uuid], onDelete: Cascade)
+  reviews           Review[]
+  media             Media[]
+  tasks             Task[]
+  placeHistory      PlaceHistory[]
+
+  @@index([state])
+  @@index([district])
+  @@index([placeType])
+  @@index([status])
+  @@index([createdBy])
+  @@map("places")
+}
+
+enum PlaceType {
+  TEMPLE
+  TIRTHA
+  MONASTERY
+  AAGAASHGANJ
+  OTHER
+}
+
+enum PlaceStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+}
+
+model PlaceHistory {
+  uuid          String    @id @default(uuid())
+  placeId       String
+  changedBy     String
+  changeType    ChangeType
+  oldValues     Json?
+  newValues     Json?
+  changeReason  String?
+  createdAt     DateTime  @default(now())
+
+  place         Place     @relation(fields: [placeId], references: [uuid], onDelete: Cascade)
+
+  @@index([placeId])
+  @@index([changedBy])
+  @@map("place_history")
+}
+
+enum ChangeType {
+  CREATE
+  UPDATE
+  APPROVE
+  REJECT
+}
+
+// ============================================================================
+// REVIEWS & RATINGS
+// ============================================================================
+
+model Review {
+  uuid          String    @id @default(uuid())
+  placeId       String
+  userId        String
+  rating        Int       // 1-5
+  reviewText    String?
+  helpfulCount  Int       @default(0)
+  unhelpfulCount Int      @default(0)
+  status        ReviewStatus @default(PUBLISHED)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  place         Place     @relation(fields: [placeId], references: [uuid], onDelete: Cascade)
+  user          User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  @@index([placeId])
+  @@index([userId])
+  @@index([rating])
+  @@map("reviews")
+}
+
+enum ReviewStatus {
+  PUBLISHED
+  HIDDEN
+  DELETED
+}
+
+// ============================================================================
+// MEDIA & UPLOADS
+// ============================================================================
+
+model Media {
+  uuid              String    @id @default(uuid())
+  placeId           String
+  userId            String
+  mediaType         MediaType
+  cloudinaryUrl     String
+  cloudinaryPublicId String?
+  b2FileId          String?
+  fileSizeBytes     Int?
+  status            MediaStatus @default(PENDING)
+  rejectionReason   String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  place             Place     @relation(fields: [placeId], references: [uuid], onDelete: Cascade)
+  user              User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  verificationQueue VerificationQueue?
+
+  @@index([placeId])
+  @@index([userId])
+  @@index([status])
+  @@map("media")
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  PDF
+  AUDIO
+}
+
+enum MediaStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model VerificationQueue {
+  uuid          String    @id @default(uuid())
+  mediaId       String    @unique
+  placeId       String
+  submittedBy   String
+  reviewedBy    String?
+  status        VerificationStatus @default(PENDING)
+  rejectionReason String?
+  priority      Int       @default(0)
+  submittedAt   DateTime  @default(now())
+  reviewedAt    DateTime?
+
+  media         Media     @relation(fields: [mediaId], references: [uuid], onDelete: Cascade)
+
+  @@index([status])
+  @@index([priority])
+  @@map("verification_queue")
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ============================================================================
+// VOLUNTEERS & GAMIFICATION
+// ============================================================================
+
+model Volunteer {
+  uuid             String    @id @default(uuid())
+  userId           String    @unique
+  position         VolunteerPosition
+  numTasksAssigned Int       @default(0)
+  numTasksDone     Int       @default(0)
+  numApproved      Int       @default(0)
+  numPending       Int       @default(0)
+  score            Int       @default(0)
+  level            Int       @default(0)
+  rank             Int       @default(0)
+  district         String?
+  state            String?
+  joinedAt         DateTime  @default(now())
+
+  user             User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  badges           VolunteerBadge[]
+  scores           VolunteerScore[]
+  tasks            Task[]
+
+  @@map("volunteers")
+}
+
+enum VolunteerPosition {
+  COORDINATOR
+  GUIDE
+  CURATOR
+  MANAGER
+}
+
+model Task {
+  uuid             String    @id @default(uuid())
+  volunteerId      String
+  assignedBy       String
+  placeId          String
+  taskName         String
+  description      String?
+  status           TaskStatus @default(PENDING)
+  deadline         DateTime?
+  surveyData       Json?
+  completedAt      DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  volunteer        Volunteer @relation(fields: [volunteerId], references: [uuid], onDelete: Cascade)
+  place            Place     @relation(fields: [placeId], references: [uuid], onDelete: Cascade)
+
+  @@index([volunteerId])
+  @@index([status])
+  @@map("tasks")
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  REJECTED
+}
+
+model VolunteerBadge {
+  uuid          String    @id @default(uuid())
+  volunteerId   String
+  badgeName     String
+  badgeImageUrl String?
+  earnedAt      DateTime  @default(now())
+
+  volunteer     Volunteer @relation(fields: [volunteerId], references: [uuid], onDelete: Cascade)
+
+  @@map("volunteer_badges")
+}
+
+model VolunteerScore {
+  uuid          String    @id @default(uuid())
+  volunteerId   String
+  actionType    ActionType
+  points        Int
+  createdAt     DateTime  @default(now())
+
+  volunteer     Volunteer @relation(fields: [volunteerId], references: [uuid], onDelete: Cascade)
+
+  @@map("volunteer_scores")
+}
+
+enum ActionType {
+  PLACE_ADDED
+  REVIEW_ADDED
+  MEDIA_UPLOADED
+  TASK_COMPLETED
+}
+
+// ============================================================================
+// DONATIONS & PAYMENTS
+// ============================================================================
+
+model Donation {
+  uuid                String    @id @default(uuid())
+  donorId             String
+  amount              Decimal
+  currency            String    @default("INR")
+  razorpayPaymentId   String?   @unique
+  razorpayOrderId     String?
+  donorName           String?
+  donorEmail          String?
+  receiptNumber       String?   @unique
+  paymentMethod       PaymentMethod
+  upiId               String?
+  status              DonationStatus @default(PENDING)
+  isAnonymous         Boolean   @default(false)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  donor               User      @relation(fields: [donorId], references: [uuid], onDelete: Cascade)
+  receipt             DonationReceipt?
+
+  @@index([donorId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("donations")
+}
+
+enum PaymentMethod {
+  CARD
+  UPI
+  NETBANKING
+}
+
+enum DonationStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+model DonationReceipt {
+  uuid              String    @id @default(uuid())
+  donationId        String    @unique
+  receiptPdfUrl     String?
+  receiptNumber     String    @unique
+  issuedDate        DateTime  @default(now())
+  eightyGEligible   Boolean   @default(false)
+
+  donation          Donation  @relation(fields: [donationId], references: [uuid], onDelete: Cascade)
+
+  @@map("donation_receipts")
+}
+
+// ============================================================================
+// COMMUNITY & SOCIAL
+// ============================================================================
+
+model Announcement {
+  uuid              String    @id @default(uuid())
+  createdBy         String
+  title             String
+  body              String
+  audienceRole      UserRole
+  targetState       String?
+  targetDistrict    String?
+  isPublished       Boolean   @default(false)
+  publishAt         DateTime?
+  expiresAt         DateTime?
+  createdAt         DateTime  @default(now())
+
+  @@map("announcements")
+}
+
+// ============================================================================
+// REPORTS & MODERATION
+// ============================================================================
+
+model Report {
+  uuid              String    @id @default(uuid())
+  reporterId        String
+  targetType        ReportTargetType
+  targetId          String
+  issueType         IssueType
+  description       String?
+  status            ReportStatus @default(REPORTED)
+  resolvedBy        String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@map("reports")
+}
+
+enum ReportTargetType {
+  PLACE
+  REVIEW
+  POST
+  MEDIA
+}
+
+enum IssueType {
+  INCORRECT_INFO
+  INAPPROPRIATE_CONTENT
+  DUPLICATE
+  ABUSE
+}
+
+enum ReportStatus {
+  REPORTED
+  ACKNOWLEDGED
+  RESOLVED
+}
+
+// ============================================================================
+// ADMIN & LOGGING
+// ============================================================================
+
+model AdminLog {
+  uuid          String    @id @default(uuid())
+  adminId       String
+  actionType    AdminActionType
+  targetType    String
+  targetId      String?
+  description   String?
+  ipAddress     String?
+  createdAt     DateTime  @default(now())
+
+  admin         User      @relation(fields: [adminId], references: [uuid], onDelete: Cascade)
+
+  @@index([adminId])
+  @@index([createdAt])
+  @@map("admin_logs")
+}
+
+enum AdminActionType {
+  CREATE
+  UPDATE
+  DELETE
+  APPROVE
+  REJECT
+  BAN_USER
+  VERIFY_USER
+}
+
+// ============================================================================
+// FESTIVALS
+// ============================================================================
+
+model Festival {
+  uuid            String    @id @default(uuid())
+  nameEn          String
+  nameHi          String
+  month           Int
+  dateEn          String?
+  dateHi          String?
+  significance    String?
+  validatedByMonth Boolean @default(false)
+  lastPublish     Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+
+  @@map("festivals")
+}
+
+// ============================================================================
+// NOTIFICATIONS
+// ============================================================================
+
+model Notification {
+  uuid              String    @id @default(uuid())
+  userId            String
+  title             String
+  body              String
+  notificationType  NotificationType
+  targetType        String?
+  targetId          String?
+  isRead            Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+
+  user              User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+enum NotificationType {
+  INFO
+  ALERT
+  SUCCESS
+  ACTION
+}
+
+// ============================================================================
+// POSTS (For MongoDB - Schema referenced below as comments)
+// ============================================================================
+
+// This data is stored in MongoDB, not PostgreSQL
+// Reference structure for documentation:
+// MongoDB Tables (NOT in PostgreSQL):
+// - db.posts (discussion, questions, stories, news)
+// - db.comments (post replies and discussions)
+// - db.notifications (FCM tokens, push notifications)
+// - db.activity_log (user activity tracking)
+
+// Create a dummy model for Prisma to include MongoDB
+model Post {
+  uuid      String    @id @default(uuid())
+  userId    String
+  title     String?
+  body      String?
+  createdAt DateTime  @default(now())
+
+  user      User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  @@map("posts")
+}
+
+model Comment {
+  uuid      String    @id @default(uuid())
+  postId    String?
+  userId    String
+  body      String?
+  createdAt DateTime  @default(now())
+
+  user      User      @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  @@map("comments")
+}
