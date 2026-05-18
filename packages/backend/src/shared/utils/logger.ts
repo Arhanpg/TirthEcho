@@ -12,13 +12,11 @@ export class Logger {
         winston.format.splat(),
         winston.format.json(),
         winston.format.colorize(),
-        winston.format.printf(
-          ({ level, message, timestamp, label: logLabel, ...rest }) => {
-            return `${timestamp} [${label}] ${level}: ${message} ${
-              Object.keys(rest).length ? JSON.stringify(rest, null, 2) : ''
-            }`;
-          }
-        )
+        winston.format.printf(({ level, message, timestamp, label: _logLabel, ...rest }) => {
+          return `${timestamp} [${label}] ${level}: ${message} ${
+            Object.keys(rest).length ? JSON.stringify(rest, null, 2) : ''
+          }`;
+        })
       ),
       defaultMeta: { label },
       transports: [

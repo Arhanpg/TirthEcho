@@ -6,18 +6,18 @@ import { CustomError } from '../types';
 const logger = new Logger('auth-middleware');
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
       user?: {
         uuid: string;
         role: string;
-        mobile: string;
       };
     }
   }
 }
 
-export function authMiddleware(req: Request, res: Response, next: NextFunction) {
+export function authMiddleware(req: Request, res: Response, next: NextFunction): void {
   try {
     const authHeader = req.headers.authorization;
 
@@ -31,7 +31,6 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
     req.user = {
       uuid: decoded.uuid,
       role: decoded.role,
-      mobile: decoded.mobile || '',
     };
 
     next();
@@ -48,40 +47,43 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
 }
 
 export function requireRole(...roles: string[]) {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, res: Response, next: NextFunction): void => {
     if (!req.user) {
-      return res.status(401).json({
+      res.status(401).json({
         success: false,
         error: {
           code: 'UNAUTHORIZED',
           message: 'User not authenticated',
         },
       });
+      return;
     }
 
     if (!roles.includes(req.user.role)) {
-      return res.status(403).json({
+      res.status(403).json({
         success: false,
         error: {
           code: 'FORBIDDEN',
           message: `This action requires one of these roles: ${roles.join(', ')}`,
         },
       });
+      return;
     }
 
     next();
   };
 }
 
-export function requireAuth(req: Request, res: Response, next: NextFunction) {
+export function requireAuth(req: Request, res: Response, next: NextFunction): void {
   if (!req.user) {
-    return res.status(401).json({
+    res.status(401).json({
       success: false,
       error: {
         code: 'UNAUTHORIZED',
         message: 'User not authenticated',
       },
     });
+    return;
   }
   next();
 }

@@ -28,11 +28,7 @@ const endpointConfigs: Record<string, RateLimitConfig> = {
   '/api/v1/media/upload': { windowMs: 60 * 60 * 1000, max: 10 },
 };
 
-export function rateLimitMiddleware(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function rateLimitMiddleware(req: Request, res: Response, next: NextFunction) {
   // Skip rate limiting in test environment
   if (process.env.NODE_ENV === 'test') {
     return next();
@@ -48,7 +44,7 @@ export function rateLimitMiddleware(
   }
 
   // Determine rate limit config for this endpoint
-  let config = endpointConfigs[req.path] || defaultConfig;
+  const config = endpointConfigs[req.path] || defaultConfig;
 
   // Create rate limit key
   const key = `ratelimit:${req.ip}:${req.path}`;
@@ -56,7 +52,7 @@ export function rateLimitMiddleware(
   // Get current count
   redis
     .incr(key)
-    .then(async (count) => {
+    .then(async (count): Promise<any> => {
       // Set expiry on first request
       if (count === 1) {
         await redis!.expire(key, Math.ceil(config.windowMs / 1000));

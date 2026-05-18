@@ -3,12 +3,7 @@ import { Logger } from '../utils/logger';
 
 const logger = new Logger('error-handler');
 
-export function errorHandler(
-  err: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function errorHandler(err: any, req: Request, res: Response, _next: NextFunction): void {
   logger.error('Error:', {
     message: err.message,
     stack: err.stack,
@@ -31,11 +26,7 @@ export function errorHandler(
 }
 
 export class AppError extends Error {
-  constructor(
-    public statusCode: number,
-    public code: string,
-    message: string
-  ) {
+  constructor(public statusCode: number, public code: string, message: string) {
     super(message);
     Error.captureStackTrace(this, this.constructor);
   }

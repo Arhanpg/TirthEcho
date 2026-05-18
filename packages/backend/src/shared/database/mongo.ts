@@ -31,9 +31,9 @@ export async function connectMongo() {
   }
 }
 
-export function disconnectMongo() {
+export async function disconnectMongo(): Promise<void> {
   if (cachedConnection) {
-    return mongoose.disconnect();
+    await mongoose.disconnect();
   }
 }
 

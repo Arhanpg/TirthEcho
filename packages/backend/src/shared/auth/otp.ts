@@ -1,9 +1,7 @@
 import crypto from 'crypto';
-import { Logger } from '../utils/logger';
+// import { Logger } from '../utils/logger';
 
-const logger = new Logger('otp');
-
-export function generateOTP(length: number = 6): string {
+export function generateOTP(length = 6): string {
   const digits = '0123456789';
   let otp = '';
   for (let i = 0; i < length; i++) {

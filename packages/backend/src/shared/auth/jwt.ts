@@ -13,7 +13,7 @@ export function generateAccessToken(payload: any): string {
     const token = jwt.sign(payload, JWT_SECRET, {
       expiresIn: JWT_EXPIRE,
       algorithm: 'HS256',
-    });
+    } as any);
     return token;
   } catch (error) {
     logger.error('Error generating access token:', error);
@@ -26,7 +26,7 @@ export function generateRefreshToken(payload: any): string {
     const token = jwt.sign(payload, JWT_SECRET, {
       expiresIn: JWT_REFRESH_EXPIRE,
       algorithm: 'HS256',
-    });
+    } as any);
     return token;
   } catch (error) {
     logger.error('Error generating refresh token:', error);

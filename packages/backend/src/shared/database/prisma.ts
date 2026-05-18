@@ -1,7 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import { Logger } from '../utils/logger';
-
-const logger = new Logger('prisma');
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
@@ -26,11 +23,13 @@ export const prisma =
 
 // Log queries in development
 if (process.env.NODE_ENV === 'development') {
-  prisma.$on('query', (e: any) => {
-    logger.debug(`Query: ${e.query}`);
-    logger.debug(`Params: ${e.params}`);
-    logger.debug(`Duration: ${e.duration}ms`);
-  });
+  // Query logging disabled due to complex Prisma type system
+  // Uncomment below if needed for debugging
+  // prisma.$on('query' as any, (e: any) => {
+  //   logger.debug(`Query: ${e.query}`);
+  //   logger.debug(`Params: ${e.params}`);
+  //   logger.debug(`Duration: ${e.duration}ms`);
+  // });
 }
 
 if (process.env.NODE_ENV !== 'production') {

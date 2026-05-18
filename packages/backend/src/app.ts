@@ -29,7 +29,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Request Logging
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: Request, _res: Response, next: NextFunction) => {
   logger.info(`${req.method} ${req.path}`);
   next();
 });
@@ -39,7 +39,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // ============================================================================
 
 // Health Check
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -49,7 +49,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // API Status
-app.get('/api/v1/status', (req: Request, res: Response) => {
+app.get('/api/v1/status', (_req: Request, res: Response) => {
   res.json({
     success: true,
     data: {
@@ -65,7 +65,7 @@ app.get('/api/v1/status', (req: Request, res: Response) => {
 // ============================================================================
 
 // 404 Handler
-app.use((req: Request, res: Response) => {
+app.use((req: Request, res: Response): void => {
   res.status(404).json({
     success: false,
     error: {
@@ -76,7 +76,7 @@ app.use((req: Request, res: Response) => {
 });
 
 // Global Error Handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, _req: Request, res: Response, _next: NextFunction): void => {
   logger.error('Global error handler:', err);
 
   const statusCode = err.statusCode || err.status || 500;

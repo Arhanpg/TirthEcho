@@ -3,11 +3,7 @@ import { Logger } from '../utils/logger';
 
 const logger = new Logger('request-logger');
 
-export function requestLoggerMiddleware(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function requestLoggerMiddleware(req: Request, res: Response, next: NextFunction) {
   const start = Date.now();
 
   // Log when response is sent

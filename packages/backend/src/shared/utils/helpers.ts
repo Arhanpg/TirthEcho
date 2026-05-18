@@ -2,11 +2,7 @@ export function getPaginationOffset(page: number, pageSize: number) {
   return (page - 1) * pageSize;
 }
 
-export function formatApiResponse<T>(
-  success: boolean,
-  data?: T,
-  message?: string
-) {
+export function formatApiResponse<T>(success: boolean, data?: T, message?: string) {
   return {
     success,
     data,
